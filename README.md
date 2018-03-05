@@ -38,4 +38,22 @@ The Global Environment and The Global Object
 >
 >The *javaScript Engine* creates these 2 things for you, whenever your code is run because the code is wrapped in **execution context** .
 >
+>**Global Object (window)** = **'this'**
+>
+>*Global* in *javaScript* basically means: **"Not inside a Function"** .
+>
+>So, any *global* variable or function will be accessible on the *window* object.
+>```
+>// example code
+>var a = 'Hello World';
+>```
+>
+>```
+>// accessing the example code via chrome dev tools
+>a
+>"Hello World"
+>window.a
+>"Hello World"
+>```
+>
 >
