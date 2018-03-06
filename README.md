@@ -56,4 +56,44 @@ The Global Environment and The Global Object
 >"Hello World"
 >```
 >
+
 >
+>**Execution Context** is Created (*CREATION PHASE*)
+>In the creation phase we have:
+>- Global Object
+>- 'this'
+>- Outer Environment
+>
+>As the parse is running through your code, it recognizes where you have created *variables* and where you have created *functions*.
+>It sets up the Memory Space for Variables and Functions, which is sometimes called "*Hoisting*"
+>
+>So those *variables* and *functions* exist in memory, and when you execute line by line it can access them.
+>But, variables are treated differently from functions.
+>Functions will be placed into *memory space* in there entirety, while variables are set in the *Execution Phase*.
+>In other words, the variable, though in memory space will not be set to a specific value until it is in the execution phase. Until that time, it will be set to a placeholder value of ```undefined```.
+>
+>You can see in the following example that logging ```a``` to the console outputs the value of ```undefined``` rather than an actual error.
+>
+> ```
+>// example js code
+>
+> b();
+>console.log(a);
+>
+>var a = 'Hello World';
+>
+>function b() {
+>  console.log('Called b!');
+>}
+>
+> ```
+>
+>
+>
+>```
+>// output of example code
+>Called b!
+>undefined
+>```
+>
+> 
