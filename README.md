@@ -64,7 +64,7 @@ The Global Environment and The Global Object
 >- 'this'
 >- Outer Environment
 >
->As the parse is running through your code, it recognizes where you have created *variables* and where you have created *functions*.
+>As the parser is running through your code, it recognizes where you have created *variables* and where you have created *functions*.
 >It sets up the Memory Space for Variables and Functions, which is sometimes called "*Hoisting*"
 >
 >So those *variables* and *functions* exist in memory, and when you execute line by line it can access them.
@@ -95,5 +95,44 @@ The Global Environment and The Global Object
 >Called b!
 >undefined
 >```
+>  
+
 >
+>**JavaScript and Undefined**
+>
+>Attempting to console.log a *variable* that is not defined at all will produce an error:.
+>See the following code snippet:
+>```
+>console.log(a);
+>```
+>```
+>// output
+>Uncaught ReferenceError: a is not defined
+>```
+>
+
+>
+>**Undefined VS Not Defined**
+>There is a big difference between the two.
+>The *error* "Uncaught ReferenceError: a is not defined" means that you are attempting to access a variable that does not exists.
+>But ```undefined``` is actually a special value with a specific meaning in JavaScript, internally.
+>Basically all variables are created with the initial/default value of undefined, which means that the variable has yet to be defined.
+>In the following code snippet you can see that the value ```undefined``` in action:
+>```
+>// code example
+>
+>var a;
+>console.log(a);
+>
+>if (a === undefined) {
+> console.log('a is undefined!');
+>} else {
+>  console.log('a is defined!');
+>}
+>```
+>```
+>// output
+>undefined
+>a is undefined!
+>```
 > 
