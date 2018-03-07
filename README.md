@@ -114,8 +114,8 @@ The Global Environment and The Global Object
 >
 >**Undefined VS Not Defined**
 >There is a big difference between the two.
->The *error* "Uncaught ReferenceError: a is not defined" means that you are attempting to access a variable that does not exists.
->But ```undefined``` is actually a special value with a specific meaning in JavaScript, internally.
+>The *error* "Uncaught ReferenceError: a is not defined" means that you are attempting to access a variable that does not exists, i.e. *is not in memory*.
+>But ```undefined``` is actually a special value (*key word*) with a specific meaning in JavaScript, internally.
 >Basically all variables are created with the initial/default value of undefined, which means that the variable has yet to be defined.
 >In the following code snippet you can see that the value ```undefined``` in action:
 >```
@@ -132,7 +132,71 @@ The Global Environment and The Global Object
 >```
 >```
 >// output
+>
 >undefined
 >a is undefined!
 >```
-> 
+>
+
+>
+>**The Execution Contex: CODE EXECUTION**
+>
+>The *Execution Context* runs the code you've written.
+>Line by line.
+>
+>
+
+Single Threaded, Synchronous Execution
+-------------
+>
+>**Single Threaded**
+>*One command at a time.*
+>Under the hood of the browser, maybe not.
+>
+
+>
+>**Synchronous**
+>*One at a time*
+>And in order...
+>
+
+>
+>Javascript is Synchronous and Single Threaded, in its behavior.
+>
+
+Function Invocation And The Execution Stack
+-------------
+>
+>**Invocation:**
+>*Running/calling a function*
+>In Javascript, by using parenthesis ().
+>
+
+>
+>Take the following code example:
+>```
+>function b() {
+>  
+>}
+>
+>function a() {
+>  b();
+>}
+>
+>a();
+>```
+>
+>Q:*What is created when this is first run?*
+>A:Global Execution Context (created and code is executed). The parser will parse the code. The compiler that will interpret your code will start up and create the global execution context (to create the vairable 'this', global object, etc...) in the creation phase. So ```function a()``` and ```function b()``` will be saved in memory. Then in the execution phase, nothing will happen for ```function a()``` or ```function b()```, but when it hits ```a();``` , it will call ```function a()``` . This is when a **new** execution context is created and placed on what's called **the execution stack**
+>
+>** Execution Stack**
+>Execution context will created and will be placed on top of each other. And which ever one is on top is the one that is currently running.
+>Every time a function is run in javaScript a new execution context is created and put on the *execution stack*.
+>The *Execution Context* is created similar to the *Global Execution Context* and will have it's own space for variables and functions.
+>It will go through the create phase, and then it will execute the code in the function line by line.
+>However, if there is another function invocation, it will stop on that line of code, and create another *execution context* and run that code.
+>This is how *function invocation* happens in javaScript.
+>
+>In our example, when ```b();``` finishes because it's at the top of the stack. It will get *popped-off* the stack, then back to ```a()```, and finally back down to *global*.  
+>Because the functions are in memory, it doesn't matter lexically where the function are in the code.
+>
