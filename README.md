@@ -236,3 +236,36 @@ Functions, Context, and Variable Environments
 >This has to do with **Scope**
 >
 >
+
+The Scope Chain
+-------------
+>
+>*Take the following code-snippet:*
+>```
+>function b() {
+>  console.log(myVar);
+>}
+>
+>function a() {
+>  var myVar = 2;
+>  b();
+>}
+>
+>var myVar = 1;
+>a();
+>```
+>
+>When we run this code in the browser and check the dev tools, we see ```console.log(myVar);``` output as:
+>```
+>1
+>```
+>
+>Which is the value of ```myVar``` from the global level.
+>In the Global Execution context ```myVar``` is ```1```, in ```a();```'s execution context ```myVar``` is ```2``` and in ```b();```'s execution context ```myVar``` simply does not exists in this variable environment.
+>But when we request a variable, or do something with a variable, javascript will do more than just look in the current executing context's variable environment.
+>Each execution context has a reference to it's outer environment. The outer environment for ```function b()``` is the *Global Execution Context*.
+>Javascript cares about the *lexical environment* when it comes to the outer reference that every *execution context* gets.
+>So, if it can't find a variable within an execution context, it will look at the outer reference for that variable there, somewhere down the execution stack.
+>The *outer reference*, where that points, is going to depend on where the function sits lexically.
+>Back to our snippet, because ```function b()``` sits lexically on the global execution context, its outer reference is global.
+>
