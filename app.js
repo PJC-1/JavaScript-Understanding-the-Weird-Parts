@@ -1,11 +1,15 @@
-function a() {
-  b();
-  var c;
-}
 function b() {
-  var d;
+  var myVar;
+  console.log(myVar);
 }
 
+function a() {
+  var myVar = 2;
+  console.log(myVar);
+  b();
+}
 
+var myVar = 1;
+console.log(myVar);
 a();
-var d;
+console.log(myVar);

@@ -189,7 +189,7 @@ Function Invocation And The Execution Stack
 >Q:*What is created when this is first run?*
 >A:Global Execution Context (created and code is executed). The parser will parse the code. The compiler that will interpret your code will start up and create the global execution context (to create the vairable 'this', global object, etc...) in the creation phase. So ```function a()``` and ```function b()``` will be saved in memory. Then in the execution phase, nothing will happen for ```function a()``` or ```function b()```, but when it hits ```a();``` , it will call ```function a()``` . This is when a **new** execution context is created and placed on what's called **the execution stack**
 >
->** Execution Stack**
+>*Execution Stack*
 >Execution context will created and will be placed on top of each other. And which ever one is on top is the one that is currently running.
 >Every time a function is run in javaScript a new execution context is created and put on the *execution stack*.
 >The *Execution Context* is created similar to the *Global Execution Context* and will have it's own space for variables and functions.
@@ -199,4 +199,40 @@ Function Invocation And The Execution Stack
 >
 >In our example, when ```b();``` finishes because it's at the top of the stack. It will get *popped-off* the stack, then back to ```a()```, and finally back down to *global*.  
 >Because the functions are in memory, it doesn't matter lexically where the function are in the code.
+>
+
+Functions, Context, and Variable Environments
+-------------
+>
+>**Variable Environment:**
+>*Where the variables live*
+>And how they relate to each other in memory.
+>
+
+>
+>Take the following code snippet:
+>```
+>function b() {
+ > var myVar;
+>}
+>
+>function a() {
+>  var myVar = 2;
+>  b();
+>}
+>
+>var myVar = 1;
+>a();
+>```
+>
+>*The Global Execution Context (created and code is executed)*, variable ```myVar```  is equal to ```1``` and put into memory space.
+>The Global Execution context's **Variable Environment** is the *Global Object*, or *Window Object* in the browser.
+>
+>Then a new *Execution Context* is created for ```a();```, and ```var myVar = 2;``` will be put into the execution context's variable environment.
+>*Every Execution Context will have its own Variable Environment*
+>
+>When ```b();``` is invoked, a new *execution context* will be created and added to the top of the stack. In this *execution context* ```var myVar;``` will have the value of ```undefined```.
+>
+>This has to do with **Scope**
+>
 >
