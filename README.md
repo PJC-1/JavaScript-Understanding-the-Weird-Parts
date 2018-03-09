@@ -269,3 +269,36 @@ The Scope Chain
 >The *outer reference*, where that points, is going to depend on where the function sits lexically.
 >Back to our snippet, because ```function b()``` sits lexically on the global execution context, its outer reference is global.
 >
+>**Scope** refers to where you can access a *variable*.
+>
+>The **Scope Chain** is the links of *outer environment references*.
+>In our example with ```function b()```, it was looking for ```myVar``` in ```b();```, and continued down the *scope chain* to look for the variable.
+>
+>
+
+>
+>If we change the snippet to define ```function b()``` inside of ```function a()``` we see some changes to the *Scope Chain*:
+>```
+>function a() {
+>
+>  function b() {
+>    console.log(myVar);
+>  }
+>
+>  var myVar = 2;
+>  b();
+>
+>}
+>
+>var myVar = 1;
+>a();
+>```
+>
+>Now, when the code is ran and ```function b()``` is invoked, it will log ```myVar``` as ```2``` because ```b()```'s *outer reference* is ```function a()```, since we moved it into ```function a()```.
+>
+>
+>Where something sits *physically* in your code (**lexically**). Is an easy way to find how something will be found along the *scope chain*.
+>
+>When something cannot be found, it will move further and further down the scope chain.
+>
+>
