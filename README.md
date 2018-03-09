@@ -301,4 +301,27 @@ The Scope Chain
 >
 >When something cannot be found, it will move further and further down the scope chain.
 >
+
+SCOPE, ES6, and let
+-------------
+>  
+>**Scope:**
+>*Where a variable is available in your code*
+>And if it's truly the same variable, or a new copy.
+>
+>**let**
+>ES6 way of defining a variable. It uses **block scoping**, which will put the variable into memory during the create phase, but the javascript engine will not allow you use the variable until the line of code is run in the execution phase that actually declares the variable.
+>
+>Take the following code snippet:
+>```
+>if (a > b) {
+>  let c = true;
+>}
+>
+>```
+>
+>If you try to use the variable ```c``` before the line ```let c = true;``` it will throw an error, even through the variable ```c``` is in memory as ```undefined```.
+>
+>The other important thing, is that it is declared inside a block. A block is generally defined as curly braces ```{...}``` (e.g.: *if-statement*, *for-loop*, etc...). When that variable is defined inside that block, it is only available inside that block at that period of time for the running code.
+>This is also true for *for-loops*, so if you have a *for-loop* with the same running code over and over, but you have a *let* statement. You will actually get a different variable in memory for every iteration the loop is running.
 >

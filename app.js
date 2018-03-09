@@ -1,13 +1,3 @@
-function a() {
-
-  function b() {
-    console.log(myVar);
-  }
-
-  var myVar = 2;
-  b();
-
+if (a > b) {
+  let c = true;
 }
-
-var myVar = 1;
-a();
