@@ -325,3 +325,27 @@ SCOPE, ES6, and let
 >The other important thing, is that it is declared inside a block. A block is generally defined as curly braces ```{...}``` (e.g.: *if-statement*, *for-loop*, etc...). When that variable is defined inside that block, it is only available inside that block at that period of time for the running code.
 >This is also true for *for-loops*, so if you have a *for-loop* with the same running code over and over, but you have a *let* statement. You will actually get a different variable in memory for every iteration the loop is running.
 >
+
+
+Asynchronous
+-------------
+>  
+>  *More than one at a time*
+>
+> **The Javascript Engine**
+> When we think of running javascript code in the *javascript engine*, we understand that it doesn't exist by itself. For example, in the internet browser.
+> There are other elements, such as:
+> - other engines
+> - running pieces of code
+>
+> That are happening outside the *javascript engine* that runs javascript when you load it into the browser.
+>
+>Things like the rendering engine, that renders the web page you're looking at.
+>
+> Or other elements of the browser that deal with going out and getting data.
+>
+> The JavaScript engine has hooks where it can talk to the rendering engine and change what the web page looks like, or go out and request data. While it may be running *asynchronously* meaning that the rendering engine, javascript engine, and request are running asynchronously inside the browser, what's happening inside just the javascript engine is synchronous.
+> So when we *asynchronously go out and make a request, or we say, let's run a function when someone clicks on a button, what happens? Because that is being handled *asynchronously*.
+> Other parts of the browser are running and looking at that code while the javascript code is still running.
+>
+>
