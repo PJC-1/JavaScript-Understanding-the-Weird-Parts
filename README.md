@@ -340,12 +340,26 @@ Asynchronous
 >
 > That are happening outside the *javascript engine* that runs javascript when you load it into the browser.
 >
->Things like the rendering engine, that renders the web page you're looking at.
+>Things like the **rendering engine**, that renders the web page you're looking at.
 >
 > Or other elements of the browser that deal with going out and getting data.
 >
-> The JavaScript engine has hooks where it can talk to the rendering engine and change what the web page looks like, or go out and request data. While it may be running *asynchronously* meaning that the rendering engine, javascript engine, and request are running asynchronously inside the browser, what's happening inside just the javascript engine is synchronous.
-> So when we *asynchronously go out and make a request, or we say, let's run a function when someone clicks on a button, what happens? Because that is being handled *asynchronously*.
+> The JavaScript engine has hooks where it can talk to the rendering engine and change what the web page looks like, or go out and request data. While it may be running **asynchronously** meaning that the rendering engine, javascript engine, and request are running asynchronously inside the browser, what's happening inside just the *javascript engine* is **synchronous**.
+> So when we *asynchronously go out and make a request, or we say, let's run a function when someone clicks on a button, what happens? Because that is being handled **asynchronously**.
 > Other parts of the browser are running and looking at that code while the javascript code is still running.
+>
+>**Event Queue**
+> Like the **Global Execution Context** there is another *list* that sits inside the **javascript engine** called the **Event Queue**.
+> The **Event Queue** is full of *events*, notifications of events that might be happening. So when the *browser* (which is somewhere *outside* the **javascript engine**) has an event that inside the **javascript engine** we want to be notified of, it gets placed on the **queue**. And whether or not we actually have a function that needs to respond to it, we can *listen* for that **event** and have that *function* handle that **event**, but either way the **event** gets placed on the **queue**.
+> So a ```click``` event, for *example*, if someone **clicks** on the screen. Now what happens if I have a function that's supposed to respond to that click event or maybe another event happens while code is running, like I went out and got data and that code went out to the browser. The browser went and got the data while my code kept running and now it's finished. What happens is that *event queue* gets looked at by **javascript** when the **execution stack** is *empty*.  Let's say function ```b()``` in the **execution stack** finishes and then it will move onto function ```a()```, and then when that finishes, it keeps going and finishes whatever execution is at the global level.
+> When the stack is *empty*, then **javascript** periodically looks at the **event queue**. It waits for something to be there. And if something is there, it looks to see if a particular function should be run when the event was triggered.
+> So it sees a ```click``` event, it processes that ```click``` event and knows there's a function that needs to be run for that **event**, so it creates the **execution context** for whatever **function** when that **event** happened. That **event** is processed and the *next* item in the **queue** moves up, and so on and so forth.
+> The **event queue** won't be processed until the **execution stack** is *empty*, until *javascript* is finished running all of that other code line by line.
+> So it isn't really **asynchronous**. What's happening is the browser **asynchronously** is putting things into the **event queue**, but the code that is running is still running line by line and then when this is empty, when the **execution contexts** are all *gone*, then it processes the events. It waits for them and sees an event, and if an event causes a function to be created and executed. It will appear on the **execution stack** and run like normal.
+>
+> Since the **javascript engine** will not look at the **event queue** until the **stack** is empty, it means that *long-running* functions can actually interrupt **events** being handled. This is how **javascript** *synchronously* is dealing with the fact that *asynchronous* events are happening. That elsewhere simultaneously in the browser things are happening that then complete that **javascript** needs to know about. So all it does, it just keeps running its normal code, and when that's all done, it will then go and look at the **event queue**.
+> And if it's already done, then it will just continue to watch that **event queue** in the **event loop** and then when it sees something, if there's supposed to be a function, if there's a **handler**/a **listener** that's supposed to run when that **event** appears in the **event queue**, it will run it.
+> Any events that happen outside of the engine get placed into that queue, and if the execution stack is empty (if javascript isn't working on anything else currently) it will process those events. It will process those event in the order they happen.
+>
 >
 >
