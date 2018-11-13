@@ -361,5 +361,41 @@ Asynchronous
 > And if it's already done, then it will just continue to watch that **event queue** in the **event loop** and then when it sees something, if there's supposed to be a function, if there's a **handler**/a **listener** that's supposed to run when that **event** appears in the **event queue**, it will run it.
 > Any events that happen outside of the engine get placed into that queue, and if the execution stack is empty (if javascript isn't working on anything else currently) it will process those events. It will process those event in the order they happen.
 >
+
+Types and JavaScript
+-------------
+>  **Dynamic Typing**:
+>  You don't tell the engine what type of data a variables holds, it figures it out while your code is running.
+>  
+>  Variables can hold different types of values because it's all figured out during *execution*.
+>  
+>  So a single *variable* can, at different times during the execution of your code hold different types of values because it's all figured out during execution.
+>  
+>  When dealing with other coding languages like *java* or *C#*, they use something called ```Static Typing```. That means you tell the *engine* (or *compiler*) ahead of time what kind of *data* you intend to hold inside a variable.
+>  
+>  So if you set a variable to a type of ```bool``` (*boolean*) and then try to set the variable to an *integer*, you would receive an *error*.
+>  
+> *JavaScript* is ```dynamically typed```, meaning that there is **no** *keyword* to tell the engine what kind of *data* you intend to put inside the variable. The *javascript engine* can figure it out on the fly.
 >
+> This turns out to be quite powerful, and can also cause you some *problems* if you don't understand how *javascript* is going to make *decisions* as a result of dynamic typing.
 >
+>**Primitive Types**
+> There are **six primitive** types in *javascript*.
+>
+> **Primitive Type**: A type of *data* that represents a single value. In other words, something that isn't an ```object```. Because remember, an ```object``` is a collection of name value pairs.
+>
+> 1. ```undefined```: represents lack of existence (*you shouldn't set a variable to this*)
+> It's what the *javascript* engine sets variables to initially and it will stay *undefined* unless you set the variable to have a value.
+> It's better to let *undefined* be the thing that means the code has never set the value.
+>
+> 2. ```null```: represents lack of existence (*you can set a variable to this*)
+> This one is better for you to use when you want to say that something doesn't exist, that the variable has *no value*.
+>
+> 3. ```boolean```: true or false.
+>
+> 4. ```number```: *floating point* number (there's always some decimals). Unlike other programming languages, there's only one 'number' type...and it can make math weird.
+>
+> 5. ```string```: A sequence of characters, both single quotes and double quotes can be used to specify a string.
+>
+> 6. ```symbol```: Is new, it's introduced in ```ES6``` (*ECMAScript 6*).
+>  
