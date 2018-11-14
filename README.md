@@ -399,3 +399,24 @@ Types and JavaScript
 >
 > 6. ```symbol```: Is new, it's introduced in ```ES6``` (*ECMAScript 6*).
 >  
+> **Operators**
+> An **operator** is a special function that is syntactically differently written than regular functions. Generally, operators take two parameters and return one result.
+>
+> The ```+``` (*plus symbol*) in javascript is actually a function. We are able to use the ```+``` symbol like we do with *addition* (i.e. ```3 + 4```) because of ```infix notation```.
+>
+> ```infix notation``` means that the function name, the *operator*, sits between the two parameters.
+>
+>  ```3 + 4``` => *infix notation*
+> ```+3 4``` => *prefix notation*
+> ```3 4+``` => *postfix notation*
+>
+> Some other *operators* include:
+> ```-```: *minus*
+> ```>```: *greater-than*
+> ```<```: *less-than*
+>
+> The idea to get is that these *operators* are actually special types of functions. That parameters are being passed to those functions and a value is being returned.
+> And inside those functions, there is pre-written code that the *javascript* language provides to run these functions.
+>
+>
+> 
