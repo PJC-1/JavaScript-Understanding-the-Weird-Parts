@@ -418,5 +418,38 @@ Types and JavaScript
 > The idea to get is that these *operators* are actually special types of functions. That parameters are being passed to those functions and a value is being returned.
 > And inside those functions, there is pre-written code that the *javascript* language provides to run these functions.
 >
+>**Operator Precedence and Associativity**
+>
+>**Operator Precedence** refers to which *operator* function get called first when there's more than one operator on the same line of executable code.
+>
+>The *JavaScript* engine will *call* or invoke the operator with the higher precedence first, or the highest, and then down the line from there.
+>
+>**Operator Associativity** is what order operator functions get called in: *left-to-right* or *right-to-left* when functions have the same precedence.
+>
+>So if I have a bunch of operators on a line of code, the precedence tells me which one gets called first. If they all have the same precedence, then depending on the *associativity* of that operator, we're
+>
+> **Operator precedence**, in the following example:
+> ```
+> var a = 3 + 4 * 5;
+> console.log(a);
+> ```
+>
+> ```multiplication``` will be called first, which will give you ```20``` and then the ```addition``` would be called. Give a total of ```23```.
+>
+> Let's take a look at another example:
+> ```
+> var a = 2, b = 3, c = 4;
+>
+> a = b = c;
+>
+> console.log(a);
+> console.log(b);
+> console.log(c);
+> ```
+>
+> Because of ```associative precedence```, the ```equal``` operator is ```right-associativity```, meaning it is evaluated *right-to-left*. This means that the ```console.log```s at the end of the example will all be equal to ```4```.
+>
+>
+>
 >
 > 
