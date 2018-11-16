@@ -449,7 +449,18 @@ Types and JavaScript
 >
 > Because of ```associative precedence```, the ```equal``` operator is ```right-associativity```, meaning it is evaluated *right-to-left*. This means that the ```console.log```s at the end of the example will all be equal to ```4```.
 >
+> **COERCION**
+> Converting a value from one type to another. This happens quite often in *javascript* because it's dynamically typed.
 >
+> What *happens* when we use the ```+``` operator with two *different* types:
+> ```
+> var a = 1 + '2';
+> console.log(a);
+> ```
 >
+> The logging will output ```12```. What happened was the first *argument* ```1``` was **coerced** by *javascript engine* into a ```string```.
 >
-> 
+> Since *javascript* is **dynamically typed** it tends to try to convert things to the value that you want.
+>
+> Understanding that *coercion* is happening is very important because you can avoid some important bugs and debug things when things look a little strange.
+>
