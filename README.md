@@ -464,3 +464,37 @@ Types and JavaScript
 >
 > Understanding that *coercion* is happening is very important because you can avoid some important bugs and debug things when things look a little strange.
 >
+> **Comparison Operators**
+> See this example:
+> ```
+> console.log(3 < 2 < 1);
+> ```
+>
+> Since the ```<``` operator has a ```left-to-right```  *associative precedence* it will evaluate ```3 < 2``` first, which is ```false```.
+>
+> Now the updated expression looks like this:
+> ```
+> console.log(false < 1);
+> ```
+>
+> Now the ```<``` is getting *passed* the parameter ```1``` and ```false```.  Because the ```<``` operator receives a parameter it does not expect (```false```), it will try to *coerce* this *boolean* to a number.
+>
+> *What does false become when it is converted into a number?*
+>By using the ```Number()``` built-in function, we can see what something will be when it is *coerced* into a number.
+>```
+>Number(false)
+>=> 0
+>
+>Number(true)
+>=> 1
+>```
+>
+> So coming back to our example, what we see when the ```false``` is replaced by the coerced number:
+> ```
+> console.log(0 < 1);
+> ```
+>
+> Which will ultimately log ```true```.
+>
+>
+> 
