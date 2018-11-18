@@ -558,5 +558,41 @@ Types and JavaScript
 >
 > Based on the ```operator precedence table``` we can see that ```strict equality```  (```===```) has a higher precedence than the ```logical OR``` (```||```) , and so ```a === 0``` will be evaluated first, resulting in the ```if-statement``` satisfied because the expression would become ``` false || true```, which is evaluated as ```true``` and the ```console.log``` being ran.
 >
+> **Default Values**
+>
+> *Example*:
+> ```
+> function greet(name) {
+>  console.log('Hello ' + name);
+> }
+>
+> greet('Tony');
+>
+> ```
+>Running the function will log the *string* ```Tony```
+>
+> *But what happens when we attempt to run the function ```greet();``` without any argument?*
+>
+> Unlike many programming languages, *JavaScript* does not care. It will not throw an *error*.
+>
+> It will simply pass nothing to name.
+> When the function ```greet()'``` is ran, ```undefined``` is logged to the console.
+>
+> The reason why is because when the function is invoked, a *new* execution context is created and this variable ```name```, which is essentially created inside the function though the value is passed during it's *invocation*, is initially set when the memory space is set up to ```undefined```.
+>
+> *JavaScript* ignores the fact that the function was called without the expected *parameters* and simply says, that's OK, it's ```undefined``` it's already in *memory*. It has a value, and you simply didn't give me a new one.
+>
+> The ```||``` operator will return a *value* that can be coerced to ```true```.
+> *Example*:
+> ```
+> undefined || "hello"
+>
+> => "hello"
+> ```
+>
+> The expression returns "hello" because if we were to run ```Boolean("hello)``` itr would return ```true```, so it would be like evaluating ```undefined || true```.
+>
+> If you pass two values to the ```||``` operator that can be coerced to ```true```, it will return the first one that coerces to true.
+>
 >
 > 

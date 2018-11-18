@@ -1,7 +1,7 @@
-var a;
-
-// goes to internet and looks for a value
-
-if (a) {
-  console.log('Something is there.');
+function greet(name) {
+  name = name || '<Your name here>';
+  console.log('Hello ' + name);
 }
+
+greet('Tony');
+greet();
