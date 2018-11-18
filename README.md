@@ -496,5 +496,67 @@ Types and JavaScript
 >
 > Which will ultimately log ```true```.
 >
+>**Existence and Booleans**
+>There's a ```Boolean()``` *built-in* function to try to convert. It is *not* recommended to use these functions, but for demonstration purposes they can be useful.
+>
+> When I try to *convert* ```undefined``` to a ```Boolean```:
+>
+> ```
+> Boolean(undefined);
+>
+> => false
+> ```
+>
+> ```undefined``` becomes ```false``` when converted in the *JavaScript engine.*
+>
+> What about ```null```:
+>
+> ```
+> Boolean(null);
+>
+>=> false
+> ```
+>
+> ```null``` returns ```false```.
+>
+> How about an ```empty string```:
+>
+> ```
+> Boolean("");
+>
+> => false
+> ```
+>
+> ```empty string``` returns ```false```.
+>
+> What we see is that all of these things that *imply* the lack of existence, they convert to ```false```.
+>
+> *Can we use that to our advantage?*
+>
+>  Yes, we can use **coercion** to our own *advantage* and check to see if a variable has a value. Something *other* than ```undefined```, ```null```, or ```empty string```.
+>
+> There is a special scenario that you need to remember, when you attempt to coerce the number ```0```:
+>
+> ```
+> Boolean(0);
+>
+> => false
+> ```
+>
+> ```0``` also returns ```false```, so if there's any chance that the variable your checking could end up being zero, that's a problem. Because ```0``` is not necessarily lack of existence. It's possible that it maybe a valid value.
+>
+>*Example*:
+>```
+>var a;
+>
+>a = 0;
+>
+>if (a || a === 0) {
+>  console.log('Something is there.');
+>}
+>```
+>
+> Based on the ```operator precedence table``` we can see that ```strict equality```  (```===```) has a higher precedence than the ```logical OR``` (```||```) , and so ```a === 0``` will be evaluated first, resulting in the ```if-statement``` satisfied because the expression would become ``` false || true```, which is evaluated as ```true``` and the ```console.log``` being ran.
+>
 >
 > 
