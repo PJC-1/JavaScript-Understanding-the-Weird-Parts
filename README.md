@@ -594,37 +594,15 @@ Types and JavaScript
 >
 > If you pass two values to the ```||``` operator that can be coerced to ```true```, it will return the first one that coerces to true.
 >
->
-> **Default Values with Frameworks**
-> When we see the following ```index.html``` file which is loading ```3``` *javascript* files:
-> ```
-><html>
->    <head>
->    </head>
->    <body>
->	<script src="lib1.js"></script>
->	<script src="lib2.js"></script>
->        <script src="app.js"></script>
->    </body>
-></html> 
-> ``` 
-> What is happening is all the *javascript* content from those files are being *stacked* on top of each other and then *ran* as a *single* file.
->
-> Often in *production* *JavaScript* environments you actually combine and *minify* your *JavaScript* code into *one* file anyway. So it's *important* that these files not *collide* with one another.
->
->When we run the *example* we receive ```Lib 2``` *logged* to the console. Thats because when the ```var libraryName = "Lib 2";``` from ```lib2.js``` was declared and attached to the *window object* it replaced the ```libraryName``` from ```lib1.js```.
->
->*What can be done to avoid any issues colliding with another library?*
->
-> Inside ```lib2.js``` we can see if ```libraryName``` is already in the *global execution* global variable.
->
->```
-> window.libraryName = window.libraryName || "Lib 2";
->```
->
-> Here we are checking to see if there's already a library name in the global execution context sitting on the global bariable which is ```window```.
->
-> If there is, then I'm not going to do anything. And if **not**, using the ```||``` operator to set my default value.
-> 
-> This can also produce some errors, but would be easier to debug and understand what's going on because the entire library just won't be there. 
 
+OBJECTS AND FUNCTIONS
+-------------
+>**Objects and the Dot**
+> Let's think about how an ```object``` lives or resides in your computer's *memory*.
+>
+> An ```object``` is a collection of *values* that are given names.
+>
+> *What kind of values?*: An ```object``` can have ```properties``` and ```methods```.
+>
+> An ```object``` can have either a *Primitive* property, *Object* property, or a *Function* method. Which sits in memory. The kind of *core* object will have some sort of *address* in your computer's *memory*. And it will have references to these different *properties* and *methods* which are also sitting in your computer's memory.
+>
