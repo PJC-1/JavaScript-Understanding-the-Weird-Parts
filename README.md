@@ -606,3 +606,7 @@ OBJECTS AND FUNCTIONS
 >
 > An ```object``` can have either a *Primitive* property, *Object* property, or a *Function* method. Which sits in memory. The kind of *core* object will have some sort of *address* in your computer's *memory*. And it will have references to these different *properties* and *methods* which are also sitting in your computer's memory.
 >
+> ```new Object();``` is *NOT* the *prefered* way of creating a ```object```.
+>
+> When *accessing* properties or methods of an ```object```, the *prefered* way is using the ```dot operator``` rather than the ```bracket notation```.
+>
