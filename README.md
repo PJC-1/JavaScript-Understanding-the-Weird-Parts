@@ -610,3 +610,20 @@ OBJECTS AND FUNCTIONS
 >
 > When *accessing* properties or methods of an ```object```, the *prefered* way is using the ```dot operator``` rather than the ```bracket notation```.
 >
+>**Objects and Object Literals**
+> We saw earlier that we can create an ```object``` with the code:
+> ```
+> var person = new Object();
+> ```
+>
+> There is a *short-hand* way of creating an ```object```:
+> ```
+> var person = {};
+> ```
+>
+> This is *NOT* an *operator*.
+>
+> What's happening, is the *JavaScript Engine* when it's parsing the syntax, and it comes across the curly brace, and it's not a part of an ```if-statement``` or a ```for-loop``` or something like that, it *assumes* that you are creating an ```object```.
+>
+>
+> 
