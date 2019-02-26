@@ -15,3 +15,7 @@ function greet(person) {
 greet(Tony);
 
 greet({ firstname: 'Mary', lastname: 'Doe' });
+
+Tony.address2 = {
+	street: '333 Second St.'
+};

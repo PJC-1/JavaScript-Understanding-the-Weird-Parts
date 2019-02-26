@@ -625,5 +625,32 @@ OBJECTS AND FUNCTIONS
 >
 > What's happening, is the *JavaScript Engine* when it's parsing the syntax, and it comes across the curly brace, and it's not a part of an ```if-statement``` or a ```for-loop``` or something like that, it *assumes* that you are creating an ```object```.
 >
+>JavaScript is very liberal with *white space*, which can make writing objects with `object literal` syntax more *human readable*.
 >
-> 
+>You can do special things with `object literal` syntax, like creating an object any where you can create a variable on the fly.
+>For example, we have a function that takes an object as a parameter and logs to the console the string `"Hi" + person.firstname`.
+>```
+>var Tony = {
+>	fistname: 'Tony',
+>	lastname: "Alicea',
+>	address: {
+>		street: '111 Main St.',
+>		city: 'New York',
+>		state: 'NY'
+>	}
+>};
+>
+>function greet(person) {
+>	console.log('Hi ' + person.firstname);
+>}
+>
+>greet(Tony);
+>```
+>
+> Calling `greet(Tony)` in the example above will output to the console the string `Hi Tony`, but we could also create an object on the fly and pass that into the `greet()` function.
+> ```
+> greet({ firstname: 'Mary', lastname: 'Doe' });
+> ```
+>
+>This would output the string `"Hi Mary"`.
+>
