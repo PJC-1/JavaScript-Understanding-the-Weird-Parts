@@ -654,3 +654,33 @@ OBJECTS AND FUNCTIONS
 >
 >This would output the string `"Hi Mary"`.
 >
+>**NAMESPACE:**
+>A container for variables and functions.
+>*Typically to keep variables and functions with the same name separate*
+>
+>In the following code snippet, we have `2` `greet` variables set to `2` different values within the *same* javascript file:
+>```
+>var greet = 'Hello!';
+>var greet = 'Hola!';
+>
+>console.log(greet);
+>```
+>
+> When the file is ran we get the string `"Hola!"` returned, this is because the lines of code are *synchronously ran* and the `greet` variable is set to `"Hola!"`.
+> By setting the `greet` variables on the *global object*, they are *overriding* each other. [`namespace`](http://www.answers.com/Q/What_is_namespace_in_programming)'s would help us with this because we would have a *container* for the *english greeting* and a separate *container* for the *spanish greeting* and related *methods* and *properties*. We **don't** have `namespace`'s in *javascript*, but we can do just that with `objects`.
+> We could prevent this collision, *for example*, by creating an `object` that will be the *container* for our properties, methods, and things we want to use. By creating separate `english` and `spanish` *objects* using `object literal` syntax. Using the `object` only as a container, it will not really have any other functionality.
+>```
+>var english = {};
+>var spanish = {};
+>```
+> Then we can set the property `greet` for the `english` object with a value of `'Hello!'` and set the property `greet` for the `spanish` object with the value of `'Hola!'`.
+> ```
+> var english = {};
+>var spanish = {};
+>
+>english.greet = 'Hello!';
+>spanish.greet = 'Holla!';
+> ```
+> The `2` `greet` variables, though they are both called `greet`, they **don't** collide/override with each other. So logging the `english` object, will output the value `Object {greet: "Hello!"}`.
+> This is something you will see a lot inside *frameworks*/*libraries* as a method to make sure that when your writing a function that you don't have any *namespace collisions* (*two things that are named the same*).
+>
