@@ -683,4 +683,44 @@ OBJECTS AND FUNCTIONS
 > ```
 > The `2` `greet` variables, though they are both called `greet`, they **don't** collide/override with each other. So logging the `english` object, will output the value `Object {greet: "Hello!"}`.
 > This is something you will see a lot inside *frameworks*/*libraries* as a method to make sure that when your writing a function that you don't have any *namespace collisions* (*two things that are named the same*).
+
+>**JSON (JavaScript Object Notation)**
+>JSON is inspired by JavaScript's *object literal* notation.
+>
+>In previous years, data was sent over the internet in various formats and the format that was landed upon for a while was `xml`.
+>*example xml format*:
+>```
+><object>
+>   <firstname>Mary</firstname>
+>   <isAProgrammer>true</isAProgrammer>
+></object>
+>```
+>
+> You can see tags surround the data and then the server would get this information and be able to parse it out.
+> This works fine, but when you're dealing with download times, how fast something is and how much data, how much bandwidth are you using. There ends up being a lot of unnecessary characters that make the amount of data that you're sending larger.
+> Just to send one piece of data, you end up having to actually send the property name twice. `<firstname>Mary</firstname>`, which is a huge amount of wasted download bandwidth if you were dealing with a lot of data.
+> This lead people to look at the JavaScript object notation and see that it would make a really great way to send data across the internet instead of sending it in a format such as `xml`.
+> The idea being to make a string that looks somethig like a javascript object.
+> Currently we pretty much send data via the JSON format. It's just a string of data, but it looks like object literal syntax. Except for some difference: Properties have to be wrapped in quotes. Which is also valid object literal syntax, where properties can be wrapped in quotes.
+> JavaScript does come with some built in functionality to transfer between JSON and JavaScript.
+> For any object, the built in feature `JSON.stringify()` can be called.
+> *example*:
+> ```
+>var objectLiteral = {
+>  firstname: 'Mary',
+>  isAProgrammer: true
+>};
+>
+>console.log(JSON.stringify(objectLiteral));
+> // => {"firstname":"mary","isAProgrammer":true}
+> ```
+> This will convert the passed in *object* into a JSON string.
+> And, if you have a string that's `JSON`, you can pass it to the method ```JSON.parse()``` and convert it to a JavaScript object.
+> *example*:
+> ```
+> var jsonValue = JSON.parse('{ "firstname": "Mary", "isAProgrammer": true }');
+>
+>console.log(jsonValue);
+>// => Object {firstname: "Mary", isAProgrammer: true}
+> ```
 >
