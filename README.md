@@ -724,3 +724,39 @@ OBJECTS AND FUNCTIONS
 >// => Object {firstname: "Mary", isAProgrammer: true}
 > ```
 >
+
+>**FUNCTIONS ARE OBJECTS:**
+>**First Class Functions**, in *JavaScript*, `functions` are `objects`.
+>**First Class Functions**: Everything you can do with other types you can do with functions. *i.e.* Assign them to *variables*, pass them around, create them on the fly.
+>*First Class Functions* change the way you can program, they can open up the horizons to completely different approaches to solving problems.
+>So when we say that functions are objects in *JavaScript*, *what does the function object look like?* Just like any object in *JavaScript*, it resides in memory. It's a special type of object, though, because it has all the features of a normal object and has some other special properties.
+>One thing that people are surprised about when they see *JavaScript* is that you can attache properties and methods to a function. Because it's just an `object`.
+>For *example*:
+>- You can attach a primitive, a `name value pair`.
+>- You can attach an `object`.
+>- You can attach other `functions`.
+>
+>In *JavaScript* the `function object` has some hidden special properties.
+>Two important properties are:
+>1)	`NAME` - a function in *JavaScript* doesn't have to have a name. A function can be what's called *anonymous*, meaning it doesn't have a name.
+>2)	`CODE` - where the actual lines of code that you've written sit. So the code you write is *not* the function itself, but rather just one of the properties you're adding to the `function object`. What's special about that property is it's *invocable*, meaning that you can say, run this code and that's when the entire *execution context* creation and *execution* on all of that happens.
+>
+>It's **imperative** that you have this mental model of a function in your mind, you have to think of a `function` as an `object` whose *code* just happens to be one of the properties of that object. There are other things that it can have attached to it, there are other things the function can do. And it can be moved around, copied and given to other elements or other areas of your code, just like an object, value, string, or number.
+>
+>**example**:
+>```
+>function greet() {
+>  console.log('hi');
+>}
+>
+>greet.language = 'english';
+>```
+>
+>We defined a *function* called `greet` and added the property `language` which is set to `'english'`. In other programming languages, this just isn't possible, but in *JavaScript*, functions are objects, and the code I wrote is just a property of that object.
+>
+>We have the greet function, and when it is created, this `function-object` was put in *memory*, in this case, onto the global object, and it has a `NAME` (`greet`).
+>It has a `CODE` property that contains the code that I wrote (`console.log('hi')`)
+>
+>You have to think of a function as more than just this container of code.
+>
+>
