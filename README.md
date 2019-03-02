@@ -759,4 +759,78 @@ OBJECTS AND FUNCTIONS
 >
 >You have to think of a function as more than just this container of code.
 >
+
+>**FUNCTION STATEMENTS AND FUNCTION EXPRESSIONS**
+>`EXPRESSION`: A unit of code that results in a value (It doesn't have to save to a variable).
 >
+>So when we say a *function statement*, statements just do work.
+>But a function *expression* or any *expression* in *JavaScript* ends up creating a value and that value doesn't necessarily have to save inside a variable.
+>
+> *example*:
+> ```
+> var a;
+> ```
+> When the file is ran, the variable `a` will be sitting it memory.
+> An *expression* returns a value.
+> ```
+> var a;
+>a = 3;
+> ```
+> The `a=3;` is a unit of code, where `a` is set with the `=` operator to the number `3`.
+> The `=` operator is a function that takes the two values, does some work and then returns a value.
+> So this will return `3` because we passed `a` on the left side and `3` on the other (the second *parameter*). `3` will now be set in memory.
+>
+>```
+>1 + 2;
+>```
+>This is also a valid expression. The plus sign as an operator, takes these two values, adds them, and returns the result. When the expression is ran, it will return `3`. Notice that it wasn't set equal to anything in memory.
+>The expression evaluated. That is to say it ran and returned this value, `3`.
+>
+>Both cases are expressions because they both returned a value.
+>That value could be a number or string or an object, etc.
+>
+>When we're talking about a statement, on the other hand, let's use an `if statement` for example:
+>```
+>if (a === 3) {
+>  
+>}
+>```
+> Inside the *parentheses* of an `if statement`, you put an *expression* because that results in a value.
+> But the `if statement` itself is just a *statement*.
+> It's called an `if statement` because it doesn't return a value.
+> You would not be able to set a variable to an `if statement`:
+> ```
+> var b = if (a === 3) {
+>  
+>}
+> ```
+> This would not work because the `if` only does *work*, no value is returned.
+> The `if` is a statement, and inside the `if statement` you have an expression, in our example `a === 3`, the triple equals operator returns a value - - ultimately *true* or *false*.
+> In *JavaScript* because functions are objects, I have both function statements and function expressions, which are very powerful.
+>
+>*example*:
+>```
+>function greet() {
+>   console.log('hi');
+>}
+>```
+>This is a function statement.
+>When it's run, it's evaluated, it doesn't result in a value. The function is placed into memory, but it's just a statement. It doesn't return a value until the function is executed. So when it sees the `greet` function it puts it in memory, but the unit of code doesn't result in a value. But it does do some special things.
+>It gets `hoisted`, that is, during the creation phase of the *execution context*, the *global execution context* in this case, it's put into memory. And so it's available ahead of time.
+>```
+>greet();
+>
+>function greet() {
+>   console.log('hi');
+>}
+>```
+>I can call `greet` before I declare it, before I make that function's *statement*.
+>It's still an `object`. It's `NAME` is `greet` and it's `CODE` property contains the code you wrote inside of it.
+>
+>No lets use a `function expression`.
+>```
+>var anonymousGreet = function() {
+>  console.log('hi');
+>}
+>```
+>Because functions in *JavaScript* are objects. So I'm creating an object on the fly and setting it equal to the variable `anonymousGreet`, which is it's spot in memory that it points to will contain a function object.

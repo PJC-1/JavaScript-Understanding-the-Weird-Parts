@@ -1,5 +1,9 @@
+greet();
+
 function greet() {
   console.log('hi');
 }
 
-greet.language = 'english';
+var anonymouseGreet = function() {
+  console.log('hi');
+}
