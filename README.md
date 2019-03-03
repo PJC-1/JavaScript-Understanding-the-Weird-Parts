@@ -834,3 +834,22 @@ OBJECTS AND FUNCTIONS
 >}
 >```
 >Because functions in *JavaScript* are objects. So I'm creating an object on the fly and setting it equal to the variable `anonymousGreet`, which is it's spot in memory that it points to will contain a function object.
+>The function object will not have a `NAME`, it will be *anonymous*. Because I didn't put anything before the *parenthesis*, which is *optional* because I have a variable that already knows where that object lives. This is an *anonymous function*
+>An *anonymous function* is a function that doesn't have a name in it's `NAME` property.
+>During the *execution phase* when it runs the line with the `anonymousGreet` variable,  the anonymous function statement will result in an object being created. It returns an object essentially. It's an *expression* it results in a value.
+>*Function expressions* are not hoisted and that can be confusing for people.
+>*example*:
+>```
+>greet();
+>
+>function greet() {
+>  console.log('hi');
+>}
+>
+>anonymousGreet();
+>
+>var anonymouseGreet = function() {
+>  console.log('hi');
+>}
+>```
+> In the above example calling `greet();` will work, but the `anonymousGreet();` will result in an error.
