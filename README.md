@@ -852,4 +852,25 @@ OBJECTS AND FUNCTIONS
 >  console.log('hi');
 >}
 >```
-> In the above example calling `greet();` will work, but the `anonymousGreet();` will result in an error.
+> In the *above* example calling `greet();` will work, but the `anonymousGreet();` will result in an error.
+>
+>We have to first set equal, so that it's sitting in memory and then it can be invoked.
+>*example*:
+>```
+>greet();
+>
+>function greet() {
+>  console.log('hi');
+>}
+>
+>
+>var anonymousGreet = function() {
+>  console.log('hi');
+>}
+>
+>anonymousGreet();
+>
+>```
+>
+>The example above is *successful* because on the line where `anonymousGreet` is defined, the equals operator has been run and it's put the result of the statement, a new function object, into the variable. So that the `anonymousGreet` variable points to a spot in memory and inside that spot in your computer's memory, is sitting the *function object*.
+>
