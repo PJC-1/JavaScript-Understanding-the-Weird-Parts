@@ -874,3 +874,40 @@ OBJECTS AND FUNCTIONS
 >
 >The example above is *successful* because on the line where `anonymousGreet` is defined, the equals operator has been run and it's put the result of the statement, a new function object, into the variable. So that the `anonymousGreet` variable points to a spot in memory and inside that spot in your computer's memory, is sitting the *function object*.
 >
+>A function expression creates an object, a `function object` on the fly. So it's possible to do something really strange.
+>*example*:
+>```
+>function log(a) {
+>  console.log(a);
+>}
+>
+>log(function() {
+>  console.log('hi');
+>});
+>```
+>
+>In the example above we are passing `log` a function, that is created *on the fly*.
+>
+>This works an awful lot like an object literal. It creates a function on the fly:
+>-	putting in some code
+>-	 it creates that object
+>-	puts that code into that `CODE` property of that function object
+>
+>It's just like a string, a number, or an object.
+>Just creating a function on the fly because functions are objects. So that will get passed to the function. It's anonymous, but it's referenced with that `a` parameter. This is an example of *first class functions*, i.e. functions that can be passed around, created on the fly, and variables can be set equal to them.
+>
+>So, if I want to then invoke this function, the `a` parameter now points at a spot in memory, where this has been created, when the `log` function is called.
+>In order to *invoke the passed in *function* you would use the parenthesis:
+>```
+>function log(a) {
+>  a();
+>}
+>
+>log(function() {
+>  console.log('hi');
+>});
+>```
+>
+>That tells the *JavaScript* engine to invoke, or *run* the function.
+>This concept of *first class functions*, where you can pass functions around, give function to other function, use them like you do variables, introduces an entirely new class of programming, called `functional programming`.
+>
