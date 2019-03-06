@@ -911,3 +911,34 @@ OBJECTS AND FUNCTIONS
 >That tells the *JavaScript* engine to invoke, or *run* the function.
 >This concept of *first class functions*, where you can pass functions around, give function to other function, use them like you do variables, introduces an entirely new class of programming, called `functional programming`.
 >
+
+BY VALUE AND BY REFERENCE
+-------------
+>In both cases, we're talking about variables.
+>Let's say I have a primitive value, a primitive type (*i.e.* number, boolean, string...) and set a *variable* equal to it. So, now that *variable, let's say `a`, has an address location, where it knows where that primitive value sits in memory.
+>Remember that the *reference* is really to a location in memory.
+>Let suppose next is ran `b = a`, setup a new *variable* and it's equal to `a`.
+>Or maybe pass `a` to a function, and the parameter name, and the function is `b`.
+>If it's a primitive value in *JavaScript*, what happens is `b`, the new *variable*, points to a new address and a copy of the *primitive value* is placed into that spot in memory. This approach is called **by value**.
+>Passing, referencing, or setting equal one value to another, by copying the value. These two variables become the same, by copying the value into two separate spots in memory.
+>Now, if I have an *object* in *JavaScript*, and this goes for all objects, that includes functions which are special types of objects and others.
+>When a variable is set equal to an object, I still get a location, an address in memory that it knows where that object lives and that how it gets referenced, but when `b` is set equal to `a`. When I'm essentially trying to get those two to be the same value, or I pass `a` to a function, that new variable `b`, instead of getting a new location in memory, simiply points to the same location in memory that `a` does.
+>No new object is created, no copy of the object is created, instead, two names point to the same address. This is called `by reference`.
+>*By reference* behaves quite differently from `by value`.
+>It's important to understand that all objects interact by reference, when setting them equal to each other, or passing to a function. This can cause problems if you don't understand this.
+>
+>*example*:
+>```
+>// by value (primitives)
+>var a = 3;
+>var b;
+>
+>b = a;
+>a = 2;
+>
+>console.log(a);
+>console.log(b);
+>```
+>
+>Because `a` and `b` from the example above are two separate copies in memory. While `a` is equal to `2`, `b` will be `3`. Which makes scense because `b` was just a copy of `a`, it has its own space in memory. So when `a` was changed, it didn't have any impact on `b` at all. Thats `by value`.
+>
