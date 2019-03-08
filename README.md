@@ -977,4 +977,75 @@ BY VALUE AND BY REFERENCE
 >
 >So, with *by reference*, objects, since they're set equal to each other by reference, once you change one, you change the other (or *all* of them).
 >
+>*example*:
+>```
+>var c = { greeting: 'hi' };
+>var d;
+>
+>d = c;
+>c.greeting = 'hello'; //mutate
+>
+>console.log(c);
+>console.log(d);
+>
+>// by reference (even as parameter)
+>function changeGreeting(obj) {
+>  obj.greeting = 'Hola'; // mutate
+>}
+>
+>changeGreeting(d);
+>console.log(c);
+>console.log(d);
+>```
+>In the above *code snippet* we create a function called `changeGreeting` that takes an `object` as a *parameter*.
+>
+>When we call the `changeGreet` function with the *variable* `d`, which points to the same spot in memory as the `c` *variable*, the `changeGreeting` function will *mutate* the object's `greeting` property and change it to `'Hola'`.
+>
+>In the output of the logging we should expect to see the same value `greeting: "Hola"}` for both the `c` and `d` variables because the function mutated the value in that particular memory space.
+>
+>The `equals operator` sets up a brand new *memory space*.
+>*example*:
+>```
+>// by reference (all objects (including functions))
+>var c = { greeting: 'hi' };
+>var d;
+>
+>d = c;
+>c.greeting = 'hello'; //mutate
+>
+>console.log(c);
+>console.log(d);
+>
+>// by reference (even as parameter)
+>function changeGreeting(obj) {
+>  obj.greeting = 'Hola'; // mutate
+>}
+>
+>changeGreeting(d);
+>console.log(c);
+>console.log(d);
+>
+>// equals operator sets up new memory space (new address)
+>c = { greeting: 'howdy' };
+>console.log(c);
+>console.log(d);
+>```
+>
+>In the *code snippet* above the line `c = { greeting: 'howdy' };` sets a brand new memory space for `c`, and puts the value `{ greeting: 'howdy' };` in it.
+>
+>So, `d` and `c`, will no longer be pointing, to the same location in memory.
+>
+>The output of `c` will be `Object {greeting: "howdy"}`, and `d` is still pointing at the spot that has `Object {greeting: "Hola"}`.
+>
+>This is a special case, where by reference doesn't really apply because the `equals operator` saw that these aren't a preexisting location in memory.
+>
+>Instead, it is a brand new object being created on the fly with the object literal syntax.
+>
+>Since it saw that its second parameter wasn't an object that already existed in memory, it had to set up a spot in memory for this to live and then pointed `c` at it.
+>
+>In some programming languages you can actually decide whether something is passed by *value* or *reference*, with your code syntax, but in JavaScript you don't have that option.
+>
+>All *primitive* types are *by value*, and all *objects* are *by reference*.
+>
+>This can cause some errors and bugs that are hard to track down, if you don't understand this.
 >
