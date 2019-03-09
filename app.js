@@ -1,33 +1,12 @@
-// by value (primitives)
-var a = 3;
-var b;
+console.log(this);
 
-b = a;
-a = 2;
-
-console.log(a);
-console.log(b);
-
-// by reference (all objects (including functions))
-var c = { greeting: 'hi' };
-var d;
-
-d = c;
-c.greeting = 'hello'; //mutate
-
-console.log(c);
-console.log(d);
-
-// by reference (even as parameter)
-function changeGreeting(obj) {
-  obj.greeting = 'Hola'; // mutate
+function a() {
+  console.log(this);
 }
 
-changeGreeting(d);
-console.log(c);
-console.log(d);
+var b = function() {
+  console.log(this);
+}
 
-// equals operator sets up new memory space (new address)
-c = { greeting: 'howdy' };
-console.log(c);
-console.log(d);
+a();
+b();

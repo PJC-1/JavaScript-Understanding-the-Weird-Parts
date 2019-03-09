@@ -1001,7 +1001,7 @@ BY VALUE AND BY REFERENCE
 >
 >When we call the `changeGreet` function with the *variable* `d`, which points to the same spot in memory as the `c` *variable*, the `changeGreeting` function will *mutate* the object's `greeting` property and change it to `'Hola'`.
 >
->In the output of the logging we should expect to see the same value `greeting: "Hola"}` for both the `c` and `d` variables because the function mutated the value in that particular memory space.
+>In the output of the logging we should expect to see the same value `{greeting: "Hola"}` for both the `c` and `d` variables because the function mutated the value in that particular memory space.
 >
 >The `equals operator` sets up a brand new *memory space*.
 >*example*:
@@ -1048,4 +1048,75 @@ BY VALUE AND BY REFERENCE
 >All *primitive* types are *by value*, and all *objects* are *by reference*.
 >
 >This can cause some errors and bugs that are hard to track down, if you don't understand this.
+>
+
+OBJECTS, FUNCTIONS, AND 'this'
+-------------
+>
+>When a `function` is invoked a *new* `execution context` is created.
+>
+>Remember **not** to confuse this with the *object* we've been discussing. The *object* sitting in memory that is a *function* has properties and methods.
+>
+>But when that code is **invoked** an **execution context** is created and put on the `execution stack`. And that determines how that code is **run** (*executed*).
+>
+>Think of the *execution context* as focusing on that `CODE` portion of that *function object*.
+>
+>Each *execution context* has this `variable environment`. Where the *variables* created inside that function live.
+>
+>It has a *reference* to its `outer environment`.
+>
+>Its outer `lexical environment`, where it sits *physically* in the code. Which tells it how to look down the `scope chain`.
+>
+>We also know that the *JavaScript engine*, every time an *execution context* is *created*, it gives us the `'this'` variable (*without us having to create it, declare it*). Which can be useful.
+>
+>`'this'` will be pointing at a different object, a different thing, depending on how the function is invoked. This can cause a lot of confusion.
+>
+>There are a few scenarios where `'this'` will be changed *depending* on how the function is called.
+>
+>Where the *JavaScript engine* will decide that `'this'` should point to something different. That the `'this'` **keyword** is a particular object or another, depending on *where* the function is and *how* it's called.
+>
+>We've already seen that the *keyword* `'this'` is immediately available at the *global execution context* level. If we log `console.log(this);` it will return the `Window` object.
+>
+>If we define a function `a`, where we `console.log(this);` inside the body of the function and then invoke `a`:
+>
+>```
+>function a() {
+>  console.log(this);
+>}
+>
+>a();
+>```
+>
+>Remember that invoking `a` means run that`CODE` property, which contains all the lines of code inside the *function*.
+>
+>The first thing it does is **create** that `execution context`, and one of the pieces of the puzzle is the *creation* of the *keyword* `'this'`.
+>
+>In the *code snippet*, when *ran*, the `'this'` *keyword* is still going to point to the *global object*.
+>
+>```
+>console.log(this);
+>
+>function a() {
+>  console.log(this);
+>}
+>
+>var b = function() {
+>  console.log(this);
+>}
+>
+>a();
+>b();
+>
+>```
+>
+>Even if we use a `function expression` like `b` in the above *snippet*, we still receive the `Window object`.
+>
+>Whenever a function is created that's simply a `function expression` or a `function statement`, then `'this'` will point to the `global object`.
+>
+>So, even in the above *snippet* where we have `3` separate *execution contexts*, and each of those cases they get their own `'this'` keyword, but in all those cases, the keyword points to the same address (*all point to the global object*).
+>
+>
+>
+>
+>
 >
