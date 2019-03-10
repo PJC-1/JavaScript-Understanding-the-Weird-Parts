@@ -1142,3 +1142,58 @@ OBJECTS, FUNCTIONS, AND 'this'
 >If you don't understand what `this` keyword is pointing to and you think you're somehow attaching `this` to the `function`, you're **not**.
 >
 >You're actually crashing into the `global namespace` and you can cause yourself a lot of problems.
+>
+>**OBJECT METHODS**
+>
+>Remember, in an object if the *value* is a `primitive`, it's called a `property`. And if the *value* is a `function`, it's called a `method`.
+>
+>*example*:
+>
+>```
+>var c = {
+>  name: 'The c object',
+>  log: function() {
+>      console.log(this);
+>  }
+>}
+>
+>c.log();
+>```
+>
+>In the *code snippet* above we *created* the `c` *variable* and set it to an *object literal*.
+>
+>The `log` property's value is an *anonymous function* that `console.log(this);`.
+>
+>So we can *call* the `log` method by using the *dot operator*, `c.log()`.
+>
+>What can we expect `this` to be when we invoke the `log` method?
+>
+>Remember every time a function is *invoked*, a new *execution context* is created and the *JavaScript* engine decides what that keyword `this` should be point to.
+>
+>In this case, it's a method on the object.
+>*example ouput of `c.log();`*:
+>
+>```Object {name: "The c object", log: function}```
+>
+>When a `function` is actually a `method` attached to an object, the `'this'` *keyword* becomes the `object` that that method is sitting inside of (`c`).
+>
+>*example*:
+>
+>```
+>var c = {
+>  name: 'The c object',
+>  log: function() {
+>      this.name = 'Updated c object';
+>      console.log(this);
+>  }
+>}
+>
+>c.log();
+>```
+>
+> It's possible to mutate the `object` that contains a `method` of the `object` by using the `'this'` *keyword*.
+>
+> In the example *code snippet* above we see that the `log` function changes the `name` property to `'Upated c object';`, so when we invoke the `log` function and the `console.log(this);` is ran the output will now be:
+>
+>```Object {name: "Updated c object", log: function}```
+>
