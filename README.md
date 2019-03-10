@@ -1113,10 +1113,32 @@ OBJECTS, FUNCTIONS, AND 'this'
 >
 >Whenever a function is created that's simply a `function expression` or a `function statement`, then `'this'` will point to the `global object`.
 >
->So, even in the above *snippet* where we have `3` separate *execution contexts*, and each of those cases they get their own `'this'` keyword, but in all those cases, the keyword points to the same address (*all point to the global object*).
+>So, even in the above *snippet* where we have `3` separate *execution contexts* (*`Global`, `a()`, and `b()`*), and each of those cases they get their own `'this'` keyword, but in all those cases, the keyword points to the same address (*all point to the global object*).
 >
+>That means you could even do strange things like *creating* a new variable by attaching it to the `global object`:
 >
+>```
+>function a() {
+>  console.log(this);
+>  this.newvariable = 'hello';
+>}
 >
+>var b = function() {
+>  console.log(this);
+>}
 >
+>a();
 >
+>console.log(newvariable);
 >
+>b();
+>
+>```
+>
+>We see that any variables attached to the `global object` can be referenced by the property name only, without any need to use the dot operator.
+>
+>It just assumes I'm asking for a variable on the global object.
+>
+>If you don't understand what `this` keyword is pointing to and you think you're somehow attaching `this` to the `function`, you're **not**.
+>
+>You're actually crashing into the `global namespace` and you can cause yourself a lot of problems.
