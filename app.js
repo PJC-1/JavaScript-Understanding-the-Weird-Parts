@@ -20,6 +20,12 @@ var c = {
   log: function() {
       this.name = 'Updated c object';
       console.log(this);
+
+      var setname = function(newname) {
+        this.name = newname;
+      }
+      setname('Updated again! The c object');
+      console.log(this);
   }
 }
 

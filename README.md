@@ -1197,3 +1197,49 @@ OBJECTS, FUNCTIONS, AND 'this'
 >
 >```Object {name: "Updated c object", log: function}```
 >
+>There is a *gotcha*, if we define a *function expression* inside a method and attempt to *mutate* a property using the `'this'` *keyword*.
+>
+>*example*:
+>```
+>var c = {
+>  name: 'The c object',
+>  log: function() {
+>      this.name = 'Updated c object';
+>      console.log(this);
+>
+>      var setname = function(newname) {
+>        this.name = newname;
+>      }
+>      setname('Updated again! The c object');
+>      console.log(this);
+>  }
+>}
+>
+>c.log();
+>```
+>
+>We see that in the `log` *method* we set the `setname` *variable* to a `function expression` that takes a `newname` *argument* and sets the `this.name` *property* to the *passed-in* function argument.
+>
+>When we invoke `c.log()`, the line `setname('Updated again! The c object');` is ran followed by a log to the console `console.log(this);`.
+>
+>We might expect the log `console.log(this);` to output the new `name` property to be `'Updated again! The c object'` (*mutated* the `setname()` function), but the output from the `c.log()` is:
+>
+>```
+>Object {name: "Updated c object", Log: function}
+>Object {name: "Updated c object", Log: function}
+>```
+>
+>At this point if we take a look at the `Window` object, you'll find:
+>
+>```
+>name: "Updated again! The c object"
+>```
+>
+>The `name` property was instead *created* and added by the `equals operator` on the `global object`.
+>
+>That means that the internal *function* (`setname`), when its *execution context* was created, the `'this'` *keyword* points to the `global object`, even though it's sitting kind of inside an *object*.
+>
+>*A lot* of people think this is *wrong*, but that's the way *JavaScript* works int his case and there's not a lot we can do about it at this point.
+>
+>
+>
