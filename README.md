@@ -1237,9 +1237,47 @@ OBJECTS, FUNCTIONS, AND 'this'
 >
 >The `name` property was instead *created* and added by the `equals operator` on the `global object`.
 >
->That means that the internal *function* (`setname`), when its *execution context* was created, the `'this'` *keyword* points to the `global object`, even though it's sitting kind of inside an *object*.
+>That means that the internal *function* (`setname`), when its *execution context* was created, the `'this'` *keyword* points to the `global object`, even though it's sitting kind of inside an *object* (`c`).
 >
 >*A lot* of people think this is *wrong*, but that's the way *JavaScript* works int his case and there's not a lot we can do about it at this point.
 >
+>*What can I do to make sure that I'm using the right object?*
+> There is a very common pattern that we can use in this case.
+>
+>Because we understand that objects are set by reference.
+>
+>*example*:
+>```
+>var c = {
+>  name: 'The c object',
+>  log: function() {
+>      var self  = this;
+>
+>      self.name = 'Updated c object';
+>      console.log(self);
+>
+>      var setname = function(newname) {
+>        self.name = newname;
+>      }
+>      setname('Updated again! The c object');
+>      console.log(self);
+>  }
+>}
+>
+>c.log();
+>```
+>
+>Inside the `log` method we can set a variable called `self` and set that *equal* to `this`. It is the first line of the `object method`.
+>
+>Now we have a new variable called `self`, and since they are `objects`, it's going to be set equal to `by reference`.
+>
+>So `self` will be pointing at the same location in memory as the `this` keyword. Which means `self` is pointing to the `c` object.
+>
+>Then we use `self` everywhere we would have used `this, even inside *sub-functions*. That way I don't have to think about: "*am I pointing to the right object?*"
+>
+>For *example* the line `self.name = 'Updated c object';`.
+>The `self` variable is pointing to the same location in memory as `this` (`c` object).
+>
+>So when I *mutate* it, it's going to update the appropriate thing, in this case the `c` object.
 >
 >

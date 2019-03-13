@@ -18,14 +18,16 @@ b();
 var c = {
   name: 'The c object',
   log: function() {
-      this.name = 'Updated c object';
-      console.log(this);
+      var self  = this;
+
+      self.name = 'Updated c object';
+      console.log(self);
 
       var setname = function(newname) {
-        this.name = newname;
+        self.name = newname;
       }
       setname('Updated again! The c object');
-      console.log(this);
+      console.log(self);
   }
 }
 
