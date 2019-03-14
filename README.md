@@ -1280,4 +1280,22 @@ OBJECTS, FUNCTIONS, AND 'this'
 >
 >So when I *mutate* it, it's going to update the appropriate thing, in this case the `c` object.
 >
+>In the `setname` function, there is no `self` declared inside this function so the *JavaScript* engine will look down the `scope chain`.
+>
+>*Where is this function sitting physically in the code?*
+>
+>It will go to the next area *outside*, the outer *lexical reference*, and look for a variable called `self`.  So the `self` variable inside the `setname` function will be pointing to the `c` object.
+>
+>Now the output of the `c.log();` method will be :
+>```
+>Object {name: "Updated c object", Log: function}
+>Object {name: "Updated again! The c object", Log: function}
+>```
+>
+>We learned that no programming language is perfect.
+>
+>They all have their quirks, and *JavaScript* certainly isn't an exception.
+But there are patterns we can use to get around any problems the programming language might have.
+>
+>The `let` *keyword*, which will be an alternative to the `var` keyword, is meant to clear some of these problems up.
 >
