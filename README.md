@@ -1298,4 +1298,69 @@ OBJECTS, FUNCTIONS, AND 'this'
 But there are patterns we can use to get around any problems the programming language might have.
 >
 >The `let` *keyword*, which will be an alternative to the `var` keyword, is meant to clear some of these problems up.
+
+ARRAYS: COLLECTIONS OF ANYTHING
+-------------
+>
+>An `Array` is a **collection** that *holds* many things inside of it.
+>
+>Just like the `Object`, the `Array` can be *created* by either:
+>
+>1)	Use the `new` *keyword* to create a new instance of the `Array class` `var arr = new Array();`
+>
+>2)	Use the `Array` *literal syntax* ` var arr = [];`, with *brackets* instead of *curly braces*.
+>
+>Then *values* can be put inside the `array` separated by *commas*.
+>
+>*JavaScript* `arrays` are *zero based* meaning that `0th` position is the first *element* in the `array`.
+>
+>*JavaScript* `arrays` are a bit different. Because *JavaScript* is `dynamically typed`.
+>
+>In *most* programming languages, an `array` can hold a *list* or *collection* of things of a *particular* type. So an `array` of `numbers`, or an `array` of `strings`, or an `array` of `objects`.
+>
+>But *JavaScript* isn't like that. It figures out what types of things are *on the fly*.
+>
+>So I can put *whatever* I want into an `array`. And I can *mix* and *match* each individual item in an `array`, can be a different *type*.
+>
+>*example*:
+>```
+>var arr = [
+>    1,
+>    false,
+>    {
+>        name: 'John',
+>        address: '123 Main Street
+>    },
+>    function(name) {
+>       var greeting = 'Hello';
+>       console.log(greeting + name);
+>    },
+>    "hello"
+>];
+>```
+>
+>From the `array` *example* above, we can see that a *JavaScript* `array` can hold collections of anything.
+>
+>*example*:
+>```
+>var arr = [
+>  1,
+>  false,
+>  {
+>    name: 'John',
+>    address: '123 Main St.'
+>  },
+>  function(name) {
+>    var greeting = 'Hello ';
+>    console.log(greeting + name);
+>  },
+>  "Hello"
+>];
+>
+>console.log(arr);
+>arr[3](arr[2].name);
+>```
+>
+>When we `run` the line `arr[3](arr[2].name);` the *output* will be:
+>```Hello John```.
 >
