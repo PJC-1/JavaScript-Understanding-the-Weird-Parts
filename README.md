@@ -1364,3 +1364,74 @@ ARRAYS: COLLECTIONS OF ANYTHING
 >When we `run` the line `arr[3](arr[2].name);` the *output* will be:
 >```Hello John```.
 >
+
+'arguments' AND SPREAD
+-------------
+>
+>There is another *special* **keyword** called `arguments` that the *JavaScript engine* sets up for you *automatically* when you *execute* a *function*.
+>
+>In the *new* version of *JavaScript* has a new approach to do what `arguments` does, which is called `spread`.
+>
+>When the `execution context` is **created** it sets up a *special keyword* called `arguments`.
+>
+>`arguments` contains a list of all the values, of all the *parameters* that you pass to a `function`.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language) {
+>  console.log(firstname);
+>  console.log(lastname);
+>  console.log(language);
+>}
+>
+>greet();
+>
+>```
+>
+>In the *above* code snippet, when the `greet();` function is called. There are no `parameters` passed to it.
+>
+>In other programming languages it would result in an **error**. I would say it expects values, but *JavaScript* doesn't care. If the snippet is ran in a browser, the output would be:
+>```
+>undefined
+>undefined
+>undefined
+>```
+>
+>**Hoisting**, which happens when the `function` is *executed and it sets up the values, takes care of the parameters even though I haven't given them values.
+>
+>It executed the `greet()` function and the first thing it did was set up *memory space* for `firstname`, `lastname`, and `language` and set them *equal* to `undefined`.
+>
+>If I start to pass *arguments*, they'll be processed *left to right*.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language) {
+>  console.log(firstname);
+>  console.log(lastname);
+>  console.log(language);
+>}
+>
+>greet();
+>greet('John');
+>
+>```
+>When I pass `'John'`, it will assume that this one is the `firstname` and that I've passed nothing to the `lastname` and `language'.
+>When the snippet is ran, the output would be:
+>```
+>undefined
+>undefined
+>undefined
+>----------------
+>John
+>undefined
+>undefined
+>----------------
+>```
+>
+>You see that the first *output* is `John` and the other two are still `undefined` because of hoisting.
+>
+>This means that you can skip the passing of parameters or you can pass only part of this list of parameters  and *JavaScript's* okay with that.
+>
+>
+>
+>
