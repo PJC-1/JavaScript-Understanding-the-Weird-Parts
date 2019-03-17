@@ -1415,7 +1415,7 @@ ARRAYS: COLLECTIONS OF ANYTHING
 >greet('John');
 >
 >```
->When I pass `'John'`, it will assume that this one is the `firstname` and that I've passed nothing to the `lastname` and `language'.
+>When I pass `'John'`, it will assume that this one is the `firstname` and that I've passed nothing to the `lastname` and `language`.
 >When the snippet is ran, the output would be:
 >```
 >undefined
@@ -1432,6 +1432,42 @@ ARRAYS: COLLECTIONS OF ANYTHING
 >
 >This means that you can skip the passing of parameters or you can pass only part of this list of parameters  and *JavaScript's* okay with that.
 >
+>While this feels a little *weird*, it actually introduces some powerful concepts to the language under certain circumstances.
+>
+>For *example*, in the more recent versions of *JavaScript* you can set a **default** parameter.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language = 'en') {
+>  console.log(firstname);
+>  console.log(lastname);
+>  console.log(language);
+>  console.log('----------------');
+>}
+>```
+>
+>So if you don't give a value to the *function*, it will set that parameter to a specified value by default (in the *above* example `language` will be set to `en` by *default*).
 >
 >
+>*However*, as that's not available in all modern browsers yet, and older ones as well, you can use the *default parameter concept*,
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language) {
+>
+>  language = language || 'en';
+>
+>  console.log(firstname);
+>  console.log(lastname);
+>  console.log(language);
+>  console.log('----------------');
+>  
+>}
+>```
+>
+>In the *above* example, the line `language = language || 'en';` the `language` variable is `equal` to `language` **OR** `'en'` (*english*).
+>
+>If `language` is `undefined`, it gets *passed* to the `||` (*OR*) operator, gets *coerced* to *false*.  
+>
+>Then you end up with `'en'` (*english*) getting passed to the `=` (*equals*) operator, so `language` will end up *equaling* `'en'` (*english*).
 >
