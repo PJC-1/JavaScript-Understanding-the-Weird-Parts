@@ -1471,3 +1471,59 @@ ARRAYS: COLLECTIONS OF ANYTHING
 >
 >Then you end up with `'en'` (*english*) getting passed to the `=` (*equals*) operator, so `language` will end up *equaling* `'en'` (*english*).
 >
+>The *JavaScript engine* sets up a special *keyword* called `arguments`.
+>
+>It doesn't need to be *declared*, it is automatically available to us. The *execution context* makes sure that this is set up.
+>
+> It contains a list of all the values of the *parameters* that I've passed into the function.
+>
+> *example*:
+> ```
+> function greet(firstname, lastname, language) {
+>  console.log(arguments);
+>
+>}
+>
+>greet('John', 'Doe', 'es');
+> ```
+>
+> The *output* of the above *snippet* will be:
+> ```
+> ["John", "Doe", "es"]
+> ```
+>
+> You might notice that this kind of looks like an `array`, but we generally declare an `array` with brackets, while the brackets in the output will be *slightly italicized brackets* (*from the developer console*).
+>
+> That's because the `argument`'s special thing that *JavaScript engine* sets up is what we would call *array-like*.
+>
+> That means that it acts like an `array`, it looks like an `array`, but it isn't *exactly* a *JavaScript* `array`.
+>
+> Only in the sense that it doesn't have all the features of a *JavaScript* `array`.
+>
+> It's *sufficed* to say that it acts enough like an `array` that we can use it in the same way under most circumstances.
+>
+> So for example if I don't want my *function* to try to do anything, if no *parameters* are passed, I could check the `arguments.length`, and if it's zero, meaning that since it contains the list of all the values.
+>
+> A length of zero, just like any `array` would mean it's empty.
+>
+> *example*:
+> ```
+> function greet(firstname, lastname, language) {
+>
+>  language = language || 'en';
+>
+>  if(arguments.length === 0) {
+>    console.log('Missing parameters!');
+>    console.log('----------------');
+>    return;
+>  }
+>
+>  console.log(firstname);
+>  console.log(lastname);
+>  console.log(language);
+>  console.log(arguments);
+>  console.log('----------------');
+>
+>}
+> ```
+>
