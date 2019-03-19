@@ -1527,3 +1527,42 @@ ARRAYS: COLLECTIONS OF ANYTHING
 >}
 > ```
 >
+> It's worth saying that as time goes on, `arguments` will become *deprecated*.
+>
+> The *new* thing is called a `spread parameter`.
+>
+> Which means that if I have parameters being passed to a function, a parameter can be added with a `...`  and then a *name*.
+>  
+> And if I add on other *parameters* in the cal.
+>
+> The extra parameters that aren't defined *explicitly* all get wrapped up into a *JavaScript* `array`.
+>
+>So the `...` means * take everything else and wrap it up into an array of this name*.
+>
+> This isn't completely available yet either, but once it becomes available, then it will be the preffered approach to dealing with various sequences and various numbers of arguments of parameters.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language, ...other) {
+>
+>  language = language || 'en';
+>
+>  if(arguments.length === 0) {
+>    console.log('Missing parameters!');
+>    console.log('----------------');
+>    return;
+>  }
+>
+>  console.log(firstname);
+>  console.log(lastname);
+>  console.log(language);
+>  console.log(arguments);
+>  console.log('arg 0: ' + arguments[0]);
+>  console.log('----------------');
+>
+>}
+>
+>greet('John', 'Doe', 'es', '111 main st', 'new york');
+>
+>```
+>

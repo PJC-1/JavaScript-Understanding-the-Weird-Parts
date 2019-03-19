@@ -1,4 +1,4 @@
-function greet(firstname, lastname, language) {
+function greet(firstname, lastname, language, ...other) {
 
   language = language || 'en';
 
@@ -12,11 +12,9 @@ function greet(firstname, lastname, language) {
   console.log(lastname);
   console.log(language);
   console.log(arguments);
+  console.log('arg 0: ' + arguments[0]);
   console.log('----------------');
 
 }
 
-greet();
-greet('John');
-greet('Doe');
-greet('John', 'Doe', 'es');
+greet('John', 'Doe', 'es', '111 main st', 'new york');
