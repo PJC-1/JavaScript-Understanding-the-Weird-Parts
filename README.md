@@ -1566,3 +1566,88 @@ ARRAYS: COLLECTIONS OF ANYTHING
 >
 >```
 >
+
+FUNCTION OVERLOADING
+-------------
+>
+>In other programming languages like `C#`, `C++`, or `Java`, there's the idea of `function overloading`.
+>
+>What that means is I can have a `function` of the same name that has different numbers of parameters.
+>
+>This doesn't really work in *JavaScript* because functions are `objects`, so that *functionality* isn't available in the way that *JavaScript* deals with `functions`.
+>
+>Which is OK because having *first class functions* introduces a lot more options.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language) {
+>  
+>}
+>```
+>
+>But, what if you did want to somehow have some alternatives for how you call the greet *method*?
+>
+>For example, what if I wanted to not always have to pass the language parameter?
+>
+>In an earlier example, we seen that we can *default* the `language` and then have all our logic inside this `function` to decide what to do when the `language` is under *different circumstances*.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language) {
+>  language = language || 'en';
+>
+>  if(language == 'en') {
+>    console.log('Hello ' + firstname + ' ' + lastname);
+>  }
+>
+>  if(language == 'es') {
+>    console.log('Holla ' + firstname + ' ' + lastname);
+>  }
+>}
+>
+>greet('John', 'Doe', 'en');
+>greet('John', 'Doe', 'es');
+>```
+>
+>The *output* of running the above *snippet* would be:
+>```
+>Hello John Doe
+>Hola John Doe
+>```
+>
+>But I might want a different version of this function where I don't have to pass as much information.
+>
+>We can do that very easily by simply creating a different `function` with certain default *parameters* that will be passed to this `greet` *function*.
+>
+>*example*:
+>```
+>function greet(firstname, lastname, language) {
+>  language = language || 'en';
+>
+>  if(language == 'en') {
+>    console.log('Hello ' + firstname + ' ' + lastname);
+>  }
+>
+>  if(language == 'es') {
+>    console.log('Holla ' + firstname + ' ' + lastname);
+>  }
+>}
+>
+>function greetEnglish(firstname, lastname) {
+>  greet(firstname, lastname, 'en');
+>}
+>
+>function greetSpanish(firstname, lastname) {
+>  greet(firstname, lastname, 'es');
+>}
+>
+>greetEnglish('John', 'Doe');
+>greetSpanish('John', 'Doe');
+>```
+>
+>In the *above* *snippet* the *function* `greetEnglish`, only takes a `firstname` and a `lastname` as *parameters*.
+>
+>And then the `greet` *function* is called with the `firstname`, `lastname`, and `en` (*English*) *parameters*.
+>
+>When calling these *functions*, instead of always having to think about which language I'm passing, I can just call a different function, which then passes for me an intended *parameter* value.
+>
