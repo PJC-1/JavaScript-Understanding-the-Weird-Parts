@@ -1651,3 +1651,30 @@ FUNCTION OVERLOADING
 >
 >When calling these *functions*, instead of always having to think about which language I'm passing, I can just call a different function, which then passes for me an intended *parameter* value.
 >
+>This is one approach to dealing with having simpler function calls.
+>
+
+
+SYNTAX PARSERS
+-------------
+>
+>Remember that the code you write isn't directly run on the computer, but there's that intermediate program between your code and the computer that translates your code into something the computer can understand.
+>
+>The *JavaScript engine* on your browser for example does this. It has different aspects and elements to it, one of them being a *syntax parser*, which reads your code and determines if it's valid, and what it is you're trying to do.
+>
+> For example, if it sees in your code as it's going character by character an `r` by itself, it assumes that you're probably going to write a `return` *statement*, so it's expecting an `e`.
+>
+>And it will go *character by character*, and if it sees something unexpected, it will *throw* an *error*.
+>
+>But if it sees what it *anticipates* as *valid syntax*, then it keeps on going.
+>
+>It may come across an ending or terminating character like a `semicolon` (`;`).
+>
+>So, *imagine* in your mind that the *JavaScript engine*, the *syntax parser* that's part of that *JavaScript engine*, is going through your code *character by character*, making assumptions, stating certain rules, and can even make changes to your code before it's executed.
+>
+>That's *exactly* what happens in certain circumstances in JavaScript, and it's important to think this way about how the *JavaScript* engine is reading your code.
+>
+>Character by character, using a set of rules for what's valid syntax and deciding what it is that you intend.
+>
+>That's all happening before your code is even executed, so it can make changes if it wants to the code that you've actually written.
+>
