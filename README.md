@@ -1678,3 +1678,52 @@ SYNTAX PARSERS
 >
 >That's all happening before your code is even executed, so it can make changes if it wants to the code that you've actually written.
 >
+
+
+AUTOMATIC SEMICOLON INSERTION
+-------------
+>
+>Syntax parsers in *JavaScript*, and its *automatic semicolon insertion* is an important topic to cover.
+>
+>The *syntax parser* in *JavaScript* does something that tries to be helpful.
+>
+>You may have noticed that semicolons are optional in core *JavaScript*.
+>
+>You don't have to put a *semicolon*.
+>
+>If the *JavaScript engine* see's one character at a time, a certain statement, it knows what the language expects.
+>
+>It knows what the syntax should look like.
+>
+>If it sees that you're finishing a line, that is, a `carriage return`.
+>
+>The `carriage return` is an invisible character, but it is a character.
+>
+>The *syntax parser* sees it, knows what it is, and it says, "*Hey you're not allowed to go to the next line with this particular type of syntax, so I'm going to go ahead and insert automatically a semicolon for you.*"
+>
+>Anywhere the *syntax parser* expects that a *`semicolon` would be, it will put one for you.
+>
+>That's why it's *optional* when you're typing it.
+>
+>Not because it's *truly* optional, but because the *JavaScript engine* is putting them where it thinks they should be, if they're missing.
+>
+>**Rule one**: You should always put your own `semicolons` because you don't want the *JavaScript engine* to make that decision for you.
+>
+>You want to be certain that you are writing the code as it should be, but more than that, especially int he case of `return` *automatic semicolon insertion* can cause a **big problem** in your code.
+>
+>*example*:
+>```
+>function getPerson() {
+>  return
+>  {
+>    firstname: 'Tony'
+>  }
+>}
+>
+>console.log(getPerson());
+>
+>```
+>
+>If we *run* the above *snippet* we receive the output `undefined`.
+>
+>
