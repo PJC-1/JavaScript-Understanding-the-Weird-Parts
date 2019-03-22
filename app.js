@@ -1,6 +1,5 @@
 function getPerson() {
-  return
-  {
+  return {
     firstname: 'Tony'
   }
 }

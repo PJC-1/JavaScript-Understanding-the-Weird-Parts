@@ -1726,4 +1726,65 @@ AUTOMATIC SEMICOLON INSERTION
 >
 >If we *run* the above *snippet* we receive the output `undefined`.
 >
+>Because of *automatic semicolon insertion*.
+>
+>The *JavaScript engine*, if it sees a carriage return after the keyword `return` it will automatically insert a **semicolon**.
+>
+>So, the last *example*, essentially ran the following code:
+>```
+>function getPerson() {
+>  return;
+>  {
+>    firstname: 'Tony'
+>  }
+>}
+>
+>console.log(getPerson());
+>
+>```
+>
+>Even though the code was something else, the *syntax parser* chose to change the code
+>
+>In the above *snippet* you can see that the `object literal syntax` is on a new line, it caused the *JavaScript engine* to decide to put in a **semicolon**, so it simply *quit* out of the *function*.
+>
+>All that is received is an `undefined` result.
+>
+>To fix this, we have to tell the *syntax parser* what we're doing.
+>
+>We have to prevent it from doing automatic semicolon insertion. See the following *example*:
+>
+>function getPerson() {
+>  return {
+>    firstname: 'Tony'
+>  }
+>}
+>
+>console.log(getPerson());
+>
+>
+>Because as it goes character by character.
+>
+>Instead of seeing the carriage return after the `return` it sees a `space` and then a `curly brace` and it knows that we've started an *object literal syntax*.
+>And then it sees a carriage return and that's okay.
+>
+>You will notice that the *curly braces* are on the same line as the `functions`, `for loops`, and `if statements`. It's not always necessary.
+>*example of an alternative curly brace convention which is also valid*:
+>
+>function getPerson()
+>{
+>  return {
+>    firstname: 'Tony'
+>  }
+>}
+>
+>The above *syntax* is perfectly valid, but putting the *curly brace* on the same line as the function is sometime preferred so a mistake is never made.
+>
+>*example*:
+>function getPerson() {
+>  return {
+>    firstname: 'Tony'
+>  }
+>}
+>
+>Getting in the habit of writing `functions` out this way will help avoiding this problem.
 >
