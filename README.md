@@ -1788,3 +1788,66 @@ AUTOMATIC SEMICOLON INSERTION
 >
 >Getting in the habit of writing `functions` out this way will help avoiding this problem.
 >
+
+WHITESPACE
+-------------
+>
+>**Whitespace**: Invisible characters that create literal "space" in your written code (*i.e. carriage returns, tabs, and spaces*).
+>
+>*Whitespaces* make your code more *readable*, but is not what is actually *executed* on the computer system.
+>
+>*JavaScript's* syntax parser is *very* liberal about what it allows when it comes to *whitespace*, and we can take advantage of it to help ourselves out in our written code.
+>
+>*example*:
+>```
+>var
+>    // first name of the person
+>    firstname,
+>
+>    // last name of the person
+>    lastname,
+>
+>    // the language
+>    // can be 'en' or 'es'
+>    language;
+>
+>var person = {
+>    // the first name
+>    firstname: 'John',
+>
+>    // the last name
+>    // (always required)
+>    lastname: 'Doe'
+>}
+>
+>console.log(person);
+>
+>```
+>
+>In the above *snippet* you can see that *JavaScript* will allow you to *add* a `comment` even between the `var` and the `firstname`.
+>
+>```
+>var
+>    // first name of the person
+>    firstname,
+>```
+>
+>You can use *whitespace* very liberally to *clarify* the code.
+>
+>In the *example snippet* we see that you can even use `comments` in an *object literal syntax*.
+>
+>```
+>var person = {
+>    // the first name
+>    firstname: 'John',
+>
+>    // the last name
+>    // (always required)
+>    lastname: 'Doe'
+>}
+>```
+>
+>Sometimes *frameworks* will use lots of comments, which can be intimidating, but they comments will help provide important information describing the code.
+>
+>Adding *comments* is a good habit that you won't regret!
+>
