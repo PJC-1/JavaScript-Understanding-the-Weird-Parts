@@ -1,21 +1,11 @@
-var
-    // first name of the person
-    firstname,
-
-    // last name of the person
-    lastname,
-
-    // the language
-    // can be 'en' or 'es'
-    language;
-
-var person = {
-    // the first name
-    firstname: 'John',
-
-    // the last name
-    // (always required)
-    lastname: 'Doe'
+// function statement
+function greet(name) {
+    console.log('Hello ' + name);
 }
+greet();
 
-console.log(person);
+// function expression
+var greetFunc = function(name) {
+    console.log('Hello ' + name);
+};
+greetFunc();

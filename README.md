@@ -1851,3 +1851,48 @@ WHITESPACE
 >
 >Adding *comments* is a good habit that you won't regret!
 >
+
+
+IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
+-------------
+>
+>We've already seen the difference between *function statements* and *function expressions*.
+>
+>A *function statement* happens as a *new statement*, where `function` is the *first word* either on a *new line*, or maybe after a semi-colon.
+>
+>*example*:
+>```
+>function greet(name) {
+>    console.log(name);
+>}
+>```
+>
+>When *JavaScript8 sees this, it puts it into *memory*, but when program/script begins to *execute*, it doesn't really *execute* anything.
+>
+>You actually have to *invoke* it for it to *execute*.
+>
+>```
+>function greet(name) {
+>    console.log('Hello ' + name);
+>}
+>greet();
+>
+>```
+>
+>Then we have a *function expression*.
+>
+>```
+>var greetFunc = function(name) {
+>    console.log('Hello ' + name);
+>};
+>greetFunc();
+>```
+>
+>The *snippet* above uses a *function expression* to *set* a *variable* *equal* to it and has an *anonymous function*.
+>
+>The *anonymous function* portion is an *expression*.
+>
+>It isn't put into *memory* initially, but rather during *execution* and when it his the *anonymous function* the *JavaScript engine* creates the *function object* on the *fly*.
+>
+>Then we can *invoke* it using a *variable* that's pointing to that *memory location*.
+>
