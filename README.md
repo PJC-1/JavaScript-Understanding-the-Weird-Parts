@@ -1896,3 +1896,18 @@ IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
 >
 >Then we can *invoke* it using a *variable* that's pointing to that *memory location*.
 >
+>We could also *create* a *variable* and set it to the same *function expression*, but *immediately* invoke it by adding the parenthesis.
+>*example*:
+>```
+>var greeting = function(name) {
+>    return 'Hello ' + name;
+>}('John');
+>console.log(greeting);
+>```
+>
+>In the above *snippet*, the *function object* is created using the *function expression*.
+>
+>Then it will be *invoked* and that *value* will be `returned`, which will be set *equal* to `greeting`.
+>
+>When the `console.log(greeting);` is ran the output will be `Hello John`.
+>

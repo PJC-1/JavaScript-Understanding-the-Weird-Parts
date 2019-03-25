@@ -2,10 +2,16 @@
 function greet(name) {
     console.log('Hello ' + name);
 }
-greet();
+greet('John');
 
 // function expression
 var greetFunc = function(name) {
     console.log('Hello ' + name);
 };
-greetFunc();
+greetFunc('John');
+
+// using an Immediately Invode Function Expression (IIFE)
+var greeting = function(name) {
+    return 'Hello ' + name;
+}('John');
+console.log(greeting);
