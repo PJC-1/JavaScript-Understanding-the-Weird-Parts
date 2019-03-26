@@ -15,3 +15,7 @@ var greeting = function(name) {
     return 'Hello ' + name;
 }('John');
 console.log(greeting);
+
+(function(name) {
+    return 'Hello ' + name;
+});

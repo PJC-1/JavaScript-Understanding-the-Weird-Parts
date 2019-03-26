@@ -1911,3 +1911,40 @@ IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
 >
 >When the `console.log(greeting);` is ran the output will be `Hello John`.
 >
+>If we take the `function` and make it *stand alone*.
+>```
+>function(name) {
+>    return 'Hello ' + name;
+>}
+>```
+>
+>If the *snippet* is ran, the output will be:
+>```
+>Uncaught SyntaxError: Unexpected token (
+>```
+>
+>This is because the *syntax parser* saw the keyword `function` as the beginning of a new line so it *expects* that it is a `function statement` and wants it to have a `name`, it can't be *anonymous*.
+>
+>So how do we trick the *syntax parser* in to understanding that I don't intend this to be a `function statement`?
+>
+>Well, I need to make sure that the word `function` isn't the first thing it sees on this new line of code.
+>
+>If it isn't the *first word* on the new line of code, then it's not a problem.
+>
+>One way to achieve this is to *wrap* the `function` in `parentheses`.
+>
+>*example*:
+>```
+>(function(name) {
+>    return 'Hello ' + name;
+>});
+>```
+>
+>This is when you want a `function expression`, instead of a normal `function statement`.
+>
+>`parenthesis` inside *JavaScript* remember is an `operator`.
+>
+>And you only use `parenthesis` with `expressions`.
+>
+>It's the *grouping* operator.
+>
