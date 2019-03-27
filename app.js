@@ -17,5 +17,6 @@ var greeting = function(name) {
 console.log(greeting);
 
 (function(name) {
-    return 'Hello ' + name;
-});
+    var greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+}());

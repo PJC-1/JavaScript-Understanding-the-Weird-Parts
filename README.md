@@ -1948,3 +1948,20 @@ IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
 >
 >It's the *grouping* operator.
 >
+>You never put a *statement* inside parentheses.
+>
+>It always is an *expression*, something that returns a value.
+>
+>Since the *JavaScript engine* knows that anything inside a `parentheses must be an *expression*, it assumes that the function you've written is a function expression.
+>
+>```
+>var firstname = 'John';
+>
+>(function(name) {
+>    var greeting = 'Hello';
+>    console.log(greeting + ' ' + name);
+>}(firstname));
+>```
+>
+>A `function expression` wrapped in `parentheses`, so that the *JavaScript engine* understands that it is meant to be an *expression* and not a *statement*.
+>
