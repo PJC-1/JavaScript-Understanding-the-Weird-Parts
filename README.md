@@ -1965,3 +1965,34 @@ IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
 >
 >A `function expression` wrapped in `parentheses`, so that the *JavaScript engine* understands that it is meant to be an *expression* and not a *statement*.
 >
+>Let's take a look at what happens under the hood when the following code is ran.
+>
+>```
+>(function(name) {
+>    var greeting = 'Hello';
+>    console.log(greeting + ' ' + name);
+>}('John'));
+>```
+>
+>When the code is first *loaded*. You have the `Global Execution Context`.
+>
+>Nothing's in it because there are no *variables*, no *function statements* to be hoisted, or anything like that.
+>
+>Then it hits the first line of the `immediately invoked function expression`.
+>
+>When it gets to just the `function expression` part, it now creates that `function object` in *memory*. It's anonymous, it has no name.
+>
+>Then it will see those `parentheses` which actually invoke the function.
+>
+>A new `execution context` is created for that anonymous function that was created on the fly.
+>
+>The code is run line by line inside the function.
+>
+>We see the `greeting` variable, that variable goes into the function's `execution context` variable environment.
+>
+>Not into the `global execution context`. Any variables created inside the function will not touch the `global environment`.
+>
+>This is what makes this such a useful approach to writing your code.
+>
+>Using the `immediately invoked function expression` syntax can insure that it does not interfere with any other code that might be included in the application.
+>
