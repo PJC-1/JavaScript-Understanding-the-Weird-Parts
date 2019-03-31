@@ -1,5 +1,9 @@
-// IIFE
-(function(name) {
+var greeting = 'Hola';
+
+(function(global, name) {
     var greeting = 'Hello';
+    global.greeting = 'Hello';
     console.log(greeting + ' ' + name);
-}('John'));
+}(window, 'John'));
+
+console.log(greeting);

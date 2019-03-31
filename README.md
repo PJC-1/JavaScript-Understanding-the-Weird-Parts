@@ -1996,3 +1996,29 @@ IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
 >
 >Using the `immediately invoked function expression` syntax can insure that it does not interfere with any other code that might be included in the application.
 >
+>Let's say we did want access to the `global object` inside the `immediately invoked function expression`, we could achieve that by simply passing around parameters.
+>
+>Remember that `objects` are passed by reference.
+>
+>So, if I want access to the `global object`, I just pass it into the function.
+>
+>*example*:
+>```
+>var greeting = 'Hola';
+>
+>(function(global, name) {
+>    var greeting = 'Hello';
+>    global.greeting = 'Hello';
+>    console.log(greeting + ' ' + name);
+>}(window, 'John'));
+>
+>console.log(greeting);
+>
+>```
+>
+>In the *snippet* above we see that the `parameter` `global` is passed into the *function*, and when the function is *invoked* the `window` object is passed to the *function*.
+>
+>And inside the *function* the `global object` is accessed and *manipulates* the `greeting` variable in the `global scope`.
+>
+>When the line `console.log(greeting);` is ran, the output will be `'Hello'`, which confirms that the `immediately invoked function expression` had changed the `greeting` variable on the `global scope` from `'Hola'` or `'Hello'`.
+>
