@@ -1,9 +1,9 @@
-var greeting = 'Hola';
+function greet(whattosay) {
 
-(function(global, name) {
-    var greeting = 'Hello';
-    global.greeting = 'Hello';
-    console.log(greeting + ' ' + name);
-}(window, 'John'));
+    return function(name) {
+        console.log(whattosay + ' ' + name);
+    }
 
-console.log(greeting);
+}
+
+greet('Hi')('Tony');

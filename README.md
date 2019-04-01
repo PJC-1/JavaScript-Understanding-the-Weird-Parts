@@ -2022,3 +2022,36 @@ IMMEDIATELY INVOKED FUNCTIONS EXPRESSIONS (IIFEs)
 >
 >When the line `console.log(greeting);` is ran, the output will be `'Hello'`, which confirms that the `immediately invoked function expression` had changed the `greeting` variable on the `global scope` from `'Hola'` or `'Hello'`.
 >
+
+UNDERSTANDING CLOSURES
+-------------
+>
+>Closures is a *JavaScript* topic that's absolutely vital to understand if you're going to advance at all in understanding and writing the language.
+>
+>However, it's also *notoriously* difficult to understand.
+>
+>Understanding:
+>- *first class functions*
+>- *the execution stack*
+>- *the execution context*
+>
+>All help in *understanding* `closures` in *JavaScript*.
+>
+>*example*:
+>```
+>function greet(whattosay) {
+>
+>    return function(name) {
+>        console.log(whattosay + ' ' + name);
+>    }
+>
+>}
+>
+>greet('Hi')('Tony');
+>```
+>
+>The above snippet contains a `function`, which `returns` a `function` and is *invoked* with a *parameter* passed to the *returned function*.
+>
+>The function *outputs* `Hi Tony`.
+>
+>
