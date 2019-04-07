@@ -2054,4 +2054,75 @@ UNDERSTANDING CLOSURES
 >
 >The function *outputs* `Hi Tony`.
 >
+>If we change the last *snippet* and instead set a variable `sayHi` equal to `greet('Hi')`. `sayHi` will be the *function* that was `returned` by calling `greet`.
+>
+>```
+>function greet(whattosay) {
+>
+>    return function(name) {
+>        console.log(whattosay + ' ' + name);
+>    }
+>
+>}
+>
+>var sayHi = greet('Hi');
+>sayHi('Tony');
+>```
+>
+>When I call `sayHi('Tony')` we get the same `'Hi Tony'` *output*.
+>
+>How does the `sayHi` *function* still *know* the `whattosay` variable?
+>
+>The reason why this is peculiar  is because the `whatotsay` *variable* was created when the `greet` *function* was called, and that *function* is done.
+>
+>It completed its execution.
+>
+>It's popped off the *execution stack*.
+>
+>And yet when `sayHi('Tony')` is called, it still has the proper value of `whattosay`.
+>
+>*How is that possible?*
+>
+>It's possible because of **closures**.
+>
+>Let's take a look at what's happening under the hood when this code is executed.
+>
+>When the code *starts*, we have our `Global Execution Context`.
+>
+>When it hits the line `sayHi = greet('Hi');` it *invokes* the `greet` function, the **new execution context** is created and that variable that's passed to it, `whattosay`, is sitting in it's **variable environment**.
+>
+>It `returns` a *new* **function object**.
+>
+>So after that `return`, the `greet` **execution context** is *popped* off the stack.
+>
+>But every *execution context* has this space in memory where the variables and function created inside of it live.
+>
+>*What happens to that memory space when the execution context goes away?*
+>
+>Under normal circumstances, the *JavaScript engine* would eventually clear it out with a process called *garbage collection*.
+>
+>But at the moment that **execution context** finishes, that memory space is still there.
+>
+>The **execution context** may be gone, it's just sitting there somewhere in memory.
+>
+>We move on and we're inside the `Global Execution context` again.
+>
+>Then we **invoke** the function `sayHi` is *pointing* at.
+>
+>It's an **anonymous function** because we didn't give out function a name when we **returned** it.
+>
+>That **creates** a new `execution context`.
+>
+>And I've passed the `name` variable `'Tony'`, so that will end up in its *memory*.
+>
+>But when I hit the line `console.log(whattosay + ' ' + name);`
+>
+>When it's code is invoked, and the *JavaScript engine* sees the `whattosay` variable, what does the *JavaScript engine* do?
+>
+>It goes up the **scope chain**.
+>
+>There's an outer **lexical environment reference**.
+>
+>It goes to the next point outside where the function was created to look for that variable, since it couldn't find it inside the function itself.
+>
 >
