@@ -2111,7 +2111,7 @@ UNDERSTANDING CLOSURES
 >
 >It's an **anonymous function** because we didn't give out function a name when we **returned** it.
 >
->That **creates** a new `execution context`.
+>That **creates** a new `execution context` for `sayHi`.
 >
 >And I've passed the `name` variable `'Tony'`, so that will end up in its *memory*.
 >
@@ -2124,5 +2124,29 @@ UNDERSTANDING CLOSURES
 >There's an outer **lexical environment reference**.
 >
 >It goes to the next point outside where the function was created to look for that variable, since it couldn't find it inside the function itself.
+>
+>Even though the **execution context** of that *function* `greet` is gone, the `sayHi` **execution context** still has a *reference* to the *variables/memory space* of it's outer environment.
+>
+>In other words, even though the `greet` function ended, any **functions** created inside of it when they are called will still have a reference to that `greet` function's **memory**.
+>
+>To what was in its memory, it's **execution context** memory space.
+>
+>We say that the *execution context has closed in its outer variables*.
+>
+>The variables that it would normally have reference to anyway. Even if those **execution contexts** are gone.
+>
+>So this phenomenon, of it closing in all the variables that it's supposed to have access to, is called a **closure**.
+>
+>It isn't something you tell *JavaScript* to do. Closures are simply a feature of the *JavaScript* programming language.
+>
+>They just happen.
+>
+>It doesn't matter when we invoke a function.
+>
+>We don't have to worry if its outer environments are still running.
+>
+>The *JavaScript* engine will always make sure that whatever function I'm running, that it will have access to the variables that it's supposed to have access to.
+>
+>That its scope is intact.
 >
 >
