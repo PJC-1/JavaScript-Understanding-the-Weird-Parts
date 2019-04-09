@@ -2149,4 +2149,43 @@ UNDERSTANDING CLOSURES
 >
 >That its scope is intact.
 >
+>Here is another example with **closures**.
+>
+>example**:
+>```
+>function buildFunctions() {
+>    var arr = [];
+>
+>    for(var i = 0; i < 3; i++) {
+>        arr.push(
+>            function() {
+>                console.log(i);
+>            }
+>        )
+>    }
+>
+>    return arr;
+>}
+>
+>
+>var fs = buildFunctions();
+>
+>fs]0]();
+>fs]1]();
+>cs]2]();
+>
+>```
+>
+>The `buildFunctions` *function* adds `3` *function objects* which `console.log(i)` to an `array` and then `return` the *storage array*.
+>
+>Then the items returned from calling `buildFunctions();` are referenced and called ( *example*:`fs[0]();`)
+>
+>When the *snippet* is ran the output is:
+>```
+>3
+>3
+>3
+>```
+>
+>*Why would in every case, when it looks for `i` and goes out to the outer reference, why would it find a `3` in all cases?*
 >

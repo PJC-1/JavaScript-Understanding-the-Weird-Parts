@@ -1,10 +1,19 @@
-function greet(whattosay) {
+function buildFunctions() {
+    var arr = [];
 
-    return function(name) {
-        console.log(whattosay + ' ' + name);
+    for(var i = 0; i < 3; i++) {
+        arr.push(
+            function() {
+                console.log(i);
+            }
+        )
     }
 
+    return arr;
 }
 
-var sayHi = greet('Hi');
-sayHi('Tony');
+var fs = buildFunctions();
+
+fs]0]();
+fs]1]();
+fs]2]();
