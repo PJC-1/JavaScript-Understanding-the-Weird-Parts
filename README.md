@@ -2189,3 +2189,32 @@ UNDERSTANDING CLOSURES
 >
 >*Why would in every case, when it looks for `i` and goes out to the outer reference, why would it find a `3` in all cases?*
 >
+>Well, how does the execution stack look like as this is happening?
+>
+>The `Global Execution Context` is always at the *bottom* and it contains the `buildFunctions` function and the `fs` variable.
+>
+>We hit the line where it executes `buildFunctions()`:
+>```
+>var fs = buildFunctions();
+>```
+>
+>When `buildFunctions()` executes, we get an `execution context`, and it has `2` variables:
+>- `i` (which was created in the `for loop`)
+>- `arr` (which was declared at the beginning of the function)
+>
+>*But what are the values of those two variables by the time we hit the `return` statement?*
+>
+>The `for loop runs`, so `i` is at first `0`, and it pushes the function into the `array`.
+>
+>*Note* that `console.log(i);` isn't being *executed* at that time. That's where a lot of people get *confused*.
+>
+>All that's happening here is creation of a new function object and putting that line of code into it's code property.
+>
+>It isn't actually running, it's just creating that object. The function hasn't been invoked.
+>
+>The *loop* continues, `i` becomes a `1` because of the `i++`.
+>
+>It adds another function object into the array, then `i` becomes `2` because of the `i++` again.
+>
+>We get a `3rd` function pushed into the array. Then the `i++` is run again, and `i` is `3`. The engine sees that `i < 3;` expression and leaves the `for loop`.
+>
