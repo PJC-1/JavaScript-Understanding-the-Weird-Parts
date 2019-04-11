@@ -2218,3 +2218,30 @@ UNDERSTANDING CLOSURES
 >
 >We get a `3rd` function pushed into the array. Then the `i++` is run again, and `i` is `3`. The engine sees that `i < 3;` expression and leaves the `for loop`.
 >
+>The `i` variable's last value when I leave the `for loop` is now a `3`.
+>
+>When I hit the `return arr;` line. What's in memory in that `execution context` is that `i` is a `3` and `arr` *array* holds `3` *anonymous functions*.
+>
+>We go back to the `global execution context` and this `buildFunctions` `execution context` is **popped off** the *stack*.
+>
+>We know that what's in memory is still hanging around.
+>
+>Next, we hit the first *function call* `fs[0]();`.
+>
+>The *code* in the `code property` is `console.log(i);`, so it's `execution context` is created.
+>
+>Ther is *no* variable `i` inside of its *code*, so it goes up the `scope chain`.
+>
+>It goes to its *outer reference*.
+>
+>*Where was it created?* Inside `buildFunctions()`, and what is inside the **memory** that used to be in the `buildFunctions()` **execution context**?
+>
+>`i` is `3`
+>
+>So it runs `console.log(3);`, and then it finishes.
+>
+>We move on to the next function, the next one inside the array, and an `execution context` is created, but that one has the same `outer environment reference` because it was created in the same place as the first *function*.
+>
+>When it looks for `i`, it looks at the same spot in memory and sees `3`.
+>
+>
