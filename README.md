@@ -2244,4 +2244,41 @@ UNDERSTANDING CLOSURES
 >
 >When it looks for `i`, it looks at the same spot in memory and sees `3`.
 >
+>A `free variable` is a *variable* that is **outside* a function, but you have access to.
+>
+>*What if I did want the output to be `1`, `2`, `3`?*
+>
+>There are a couple ways to approach that.
+>
+>With `ES6`the `let` variable, we could do something like this:
+>```
+>function buildFunctions2() {
+>    var arr = [];
+>
+>    for(var i = 0; i < 3; i++) {
+>        let j = 1;
+>        arr.push(
+>            function() {
+>                console.log(j);
+>            }
+>        )
+>    }
+>
+>    return arr;
+>}
+>
+>var fs = buildFunctions2();
+>
+>fs]0]();
+>fs]1]();
+>fs]2]();
+>
+>```
+>
+>The `let` variable is **scoped* to the block, inside the *curly braces*. Every time the `for loop` runs, this will be a new variable in memory.
+>
+>It will be segmented in the side of memory of this execution context so that when the `function expression is called, it would be pointing each time at a different spot within that memory.
+>
+>With `ES5`, in order to preserve the value of `i` for the `function expression`, I'm going to need a separate execution context for each of the functions that I'm pushing into the array.
+>
 >
