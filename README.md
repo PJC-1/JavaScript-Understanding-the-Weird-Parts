@@ -2230,7 +2230,7 @@ UNDERSTANDING CLOSURES
 >
 >The *code* in the `code property` is `console.log(i);`, so it's `execution context` is created.
 >
->Ther is *no* variable `i` inside of its *code*, so it goes up the `scope chain`.
+>There is *no* variable `i` inside of its *code*, so it goes up the `scope chain`.
 >
 >It goes to its *outer reference*.
 >
@@ -2281,4 +2281,49 @@ UNDERSTANDING CLOSURES
 >
 >With `ES5`, in order to preserve the value of `i` for the `function expression`, I'm going to need a separate execution context for each of the functions that I'm pushing into the array.
 >
+>The only way to get an execution context is to execute a function.
 >
+>An **immediately invoked function expression** is a nice, clean way to do that.
+>
+>```
+>function buildFunctions2() {
+>    var arr = [];
+>
+>    for(var i = 0; i < 3; i++) {
+>        let j = 1;
+>        arr.push(
+>            (function(j) {
+>                return function() {
+>                    console.log(j);
+>                }
+>            })(i);
+>        )
+>    }
+>
+>    return arr;
+>}
+>
+>var fs = buildFunctions2();
+>
+>fs]0]();
+>fs]1]();
+>fs]2]();
+>
+>```
+>
+>In the refactored *snippet* we use the *immediately invoked function expression*, pass it an argument `j`, and returns a **function** which `console.log(j);`.
+>
+>The function is then **invoked** with variable `i` passed as the *argument*.
+>
+>What happens is every time the loop *runs*, it's going to execute the **function**, passing `0`, then it's going to *execute* a new one, this time passing `1`, and then its going to execute another one, passing `2`.
+>
+>Each of those **executions** creates its own `execution context`, and the variable `j` will be stored in each of those `3` **execution contexts**. So I'll have `j` as `0`, another **execution context** where `j` is `1`, and a different **execution context** where `j` is `2`.
+>
+>So in the `for loop` it pushes the **result** of the *immediately invoked function expression*, which **returns** a function.
+>
+>The output of the refactored *snippet* will be:
+>```
+>0
+>1
+>2
+>```
