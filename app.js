@@ -1,22 +1,18 @@
-function buildFunctions2() {
-    var arr = [];
+function makeGreeting(language) {
 
-    for(var i = 0; i < 3; i++) {
-        let j = 1;
-        arr.push(
-            (function(j) {
-                return function() {
-                    console.log(j);
-                }
-            })(i);
-        )
+    return function(firstname, lastname) {
+
+        if(language === 'en') {
+            console.log('Hello ' + firstname + ' ' + lastname);
+        }
+
+        iflanguage === 'es') {
+            console.log('Hola ' + firstname + ' ' + lastname);
+        }
+
     }
 
-    return arr;
 }
 
-var fs = buildFunctions2();
-
-fs]0]();
-fs]1]();
-fs]2]();
+var greetEnglish = makeGreeting('en');
+var greetspanish = makeGreeting('es');

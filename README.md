@@ -2327,3 +2327,42 @@ UNDERSTANDING CLOSURES
 >1
 >2
 >```
+
+FUNCTION FACTORIES
+-------------
+>
+>A `factory` just means a `function` that `returns` or *makes* other things for me.
+>
+>*Example*:
+>```
+>function makeGreeting(language) {
+>
+>    return function(firstname, lastname) {
+>
+>        if(language === 'en') {
+>            console.log('Hello ' + firstname + ' ' + lastname);
+>        }
+>
+>        iflanguage === 'es') {
+>            console.log('Hola ' + firstname + ' ' + lastname);
+>        }
+>
+>    }
+>
+>}
+>
+>var greetEnglish = makeGreeting('en');
+>var greetSpanish = makeGreeting('es');
+>```
+>
+>In the *snippet* above, we have the *function* `makeGreeting` which takes an *argument* `language`.
+>
+>The `makeGreeting` *function* returns a *function* that takes `2` arguments (`firstname` and `lastname`), and based on the `language` passed to `makeGreeting` it will *log* a greeting in either *English* or *Spanish*.
+>
+>We have `2` *variables* `greetEnglish` and `greetSpanish`, which *invoke* the `makeGreeting` *function* and pass the `language` *arguments* `'en'` and `'es'`, *respectively*.
+>
+>We see that `greetEnglish` is a **function object** whoes *closure* points to the *variable* `language` being `English` (*'en'*). And `greetSpanish` is a **function object** whose *closure* points to a different `execution context` for the same *function* where `language` is `Spanish` (*'es'*).
+>
+>It's important to remember that every time I **execute** a *function* it **creates** a **new** `execution context`, a **new** memory space.
+>
+>
