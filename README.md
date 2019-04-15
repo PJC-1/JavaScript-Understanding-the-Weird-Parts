@@ -2353,6 +2353,10 @@ FUNCTION FACTORIES
 >
 >var greetEnglish = makeGreeting('en');
 >var greetSpanish = makeGreeting('es');
+>
+>greetEnglish('John', 'Doe');
+>greetSpanish('John', 'Doe');
+>
 >```
 >
 >In the *snippet* above, we have the *function* `makeGreeting` which takes an *argument* `language`.
@@ -2361,8 +2365,13 @@ FUNCTION FACTORIES
 >
 >We have `2` *variables* `greetEnglish` and `greetSpanish`, which *invoke* the `makeGreeting` *function* and pass the `language` *arguments* `'en'` and `'es'`, *respectively*.
 >
->We see that `greetEnglish` is a **function object** whoes *closure* points to the *variable* `language` being `English` (*'en'*). And `greetSpanish` is a **function object** whose *closure* points to a different `execution context` for the same *function* where `language` is `Spanish` (*'es'*).
+>We see that `greetEnglish` is a **function object** whose *closure* points to the *variable* `language` being `English` (*'en'*). And `greetSpanish` is a **function object** whose *closure* points to a different `execution context` for the same *function* where `language` is `Spanish` (*'es'*).
 >
 >It's important to remember that every time I **execute** a *function* it **creates** a **new** `execution context`, a **new** memory space.
 >
+>The `makeGreeting` *function* has acted as a **factory function**.
+>
+>This is extremely useful because we can have a **core* set of **logic**, then make ourselves **functions** that are then easier to use. Where it is not necessary to have to pass the same parameters.
+>
+>Instead, I could just create some new **functions** that have some parameters by **default**, by using **closures**.
 >
