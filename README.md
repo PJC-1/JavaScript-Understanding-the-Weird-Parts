@@ -2343,7 +2343,7 @@ FUNCTION FACTORIES
 >            console.log('Hello ' + firstname + ' ' + lastname);
 >        }
 >
->        iflanguage === 'es') {
+>        if(language === 'es') {
 >            console.log('Hola ' + firstname + ' ' + lastname);
 >        }
 >
@@ -2374,4 +2374,47 @@ FUNCTION FACTORIES
 >This is extremely useful because we can have a **core* set of **logic**, then make ourselves **functions** that are then easier to use. Where it is not necessary to have to pass the same parameters.
 >
 >Instead, I could just create some new **functions** that have some parameters by **default**, by using **closures**.
+>
+
+CLOSURES AND CALLBACKS
+-------------
+>
+>If you use something like `setTimeout` or *jQuery events*, you're using `closures` all the time.
+>
+>*Example*:
+>```
+>function sayHiLater() {
+>
+>    var greeting = 'Hi';
+>
+>    setTimeout(function() {
+>
+>        console.log(greeting);
+>
+>    }, 3000);
+>}
+>
+>sayHiLater();
+>
+>```
+>
+>In the above *snippet*, do you realize that you are using **function expressions** and **closures**?
+>
+>`setTimeout` takes a **function object**.
+>
+>You're passing it as a *parameter*, so that's making use of **first class functions** in *JavaScript*.
+>
+>We're creating the *function on the fly*, so this takes advantage of a **function expression**.
+>
+>`sayHiLater` then finishes.
+>
+>`setTimeout` goes off outside in the **browser**, *counts*, *waits*, and then drops an **event** when the `3000 milliseconds` has passed that says the timeout has finished.
+>
+>Then the *engine* checks to see if any other **functions** *listening*. It finds one, and **runs** the **function**.
+>
+>But `greeting` doesn't exist inside this **function** and `sayHiLater` has already finished running.
+>
+>So it goes up the *scope chain* and it has a **closure** for this *variable*.
+>
+>It knows the *memory space* where it was sitting when `sayHiLater` was running in its **execution context**.
 >
