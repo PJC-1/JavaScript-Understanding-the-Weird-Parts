@@ -1,12 +1,20 @@
-function sayHiLater() {
+function tellMeWhenDone(callback) {
 
-    var greeting = 'Hi';
+    var a = 1000; // some work
+    var b = 2000; // some work
 
-    setTimeout(function() {
+    callback(); // the 'callback', it runs the function I give it!
 
-        console.log(greeting);
-
-    }, 3000);
 }
 
-sayHiLater();
+tellMeWhenDone(function() {
+
+    console.log('I am done!');
+
+});
+
+tellMeWhenDone(function() {
+
+    console.log('All done!');
+
+});
