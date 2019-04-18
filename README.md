@@ -2455,3 +2455,57 @@ CLOSURES AND CALLBACKS
 >All done!
 >```
 >
+
+
+call(), apply(), bind()
+-------------
+>
+>With out **Function Execution Context** we have:
+>- *Variable Environment*
+>- *Outer Environment reference*
+>- `this` *variable*
+>
+>We've already seen that the `this` *keyword* can point to the `global object` in some cases, and in other cases it can point to the *object* that contains the *function*, if the *function* is a *method* attached to an *object*.
+>
+>
+>*Wouldn't it be nice to be able to control what the `this` variable ends up being when the execution context is created?*
+>
+>That's where `call()`, `apply()`, and `bind()` come in.
+>
+>The `function` is a *special* type of *object*, which has properties such as `CODE` and `NAME`.
+>
+>*Functions* also have access to the *methods*:
+>-`call()`
+>-`apply()`
+>-`bind()`
+>
+>All three of these *methods* have to do with the `this` *variable* and the *arguments* that you pass to the *function* as well.
+>
+>*Example:*
+>```
+>var person = {
+>    firstname: 'John',
+>    lastname: 'Doe',
+>    getFullName: function() {
+>
+>        var fullname = this.firstname + ' ' + this.lastname;
+>        return fullname;
+>
+>    }
+>}
+>
+>var logNmae = function(lang1, lang2) {
+>
+>    console.log('Logged: ' + this.getFullName());
+>
+>}
+>
+>logName();
+>
+>```
+>
+>The above *snippet* will produce an *error* because in the *function expression* `logName` will attempt to *invoke* the `this.getFullName()` method, but `this` in this context is accessing the `global object`, and since there is no `getFullName` *method* on the `global object` the output of the *snippet* is:
+>
+>```
+>Uncaught TypeError: undefined is not a function
+>```

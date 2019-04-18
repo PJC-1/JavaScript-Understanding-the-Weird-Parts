@@ -1,20 +1,18 @@
-function tellMeWhenDone(callback) {
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function() {
 
-    var a = 1000; // some work
-    var b = 2000; // some work
+        var fullname = this.firstname + ' ' + this.lastname;
+        return fullname;
 
-    callback(); // the 'callback', it runs the function I give it!
+    }
+}
+
+var logNmae = function(lang1, lang2) {
+
+    console.log('Logged: ' + this.getFullName());
 
 }
 
-tellMeWhenDone(function() {
-
-    console.log('I am done!');
-
-});
-
-tellMeWhenDone(function() {
-
-    console.log('All done!');
-
-});
+logName();
