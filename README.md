@@ -2509,3 +2509,55 @@ call(), apply(), bind()
 >```
 >Uncaught TypeError: undefined is not a function
 >```
+>
+>*Wouldn't it be nice if I could control what the `this` keyword points to?*
+>
+>We can achieve this by using `bind()`.
+>
+>*Example*:
+>
+>```
+>var person = {
+>    firstname: 'John',
+>    lastname: 'Doe',
+>    getFullName: function() {
+>
+>        var fullname = this.firstname + ' ' + this.lastname;
+>        return fullname;
+>
+>    }
+>}
+>
+>var logNmae = function(lang1, lang2) {
+>
+>    console.log('Logged: ' + this.getFullName());
+>
+>}
+>
+>var logPersonName = logName.bind(person);
+>
+>logPersonName();
+>
+>```
+>
+>In the above *snippet* we make a new *function* called `logPersonName`.
+>
+>We use the `logName` *function*, and *access* the `bind()` *method*, which all *function objects* have access to.
+>
+>I can pass to it whatever object I want to be the `this` *variable* when the *function* runs.
+>
+>The `bind()` *method* **returns** a new *function*.
+>
+>It actually makes a copy of the `logName` *function*, and sets up this new *function object* so that whenever it's *execution context* is created the *JavaScript engine* sees that `person` was created with the `bind`, which sets up some hidden things in the background.
+>
+>When the *JavaScript* engine decides what is the `this` variable, it will know to use the *object* passed to `bind()`.
+>
+>So I'm affecting the *JavaScript* engine as far as what it decides when it creates the *execution context* for the new copy of the `logName` *function*.
+>
+>Now, when it says `this`, `this` will be the `person` *object*. So calling the `this.getFullName()` *method* will be successful.
+>
+>The output of the *snippet* will be:
+>```
+>Logged: John Doe
+>```
+>
