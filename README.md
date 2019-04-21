@@ -2591,4 +2591,53 @@ call(), apply(), bind()
 >
 >And whatever `object` you *pass* to the `bind()` *method* will be what the `this` *variable* points to *by reference*.
 >
+>It's possible to use the `.call()` *method* to let me decide what the `this` *variable* will be.
+>
+>The *first* thing I *pass* to `.call()` is what the `this` *keyword* should *point to*.
+>
+>You can also *pass* `.call()` **parameters**.
+>
+>Unlike `.bind()`, which *creates* a **copy** of the *function*, `.call()` actually executes it and then just decides what the `this` *variable* should be and rest is just the *parameters* that I would normally pass to the *function*.
+>
+>*Example*:
+>
+>```
+>var person = {
+>    firstname: 'John',
+>    lastname: 'Doe',
+>    getFullName: function() {
+>
+>        var fullname = this.firstname + ' ' + this.lastname;
+>        return fullname;
+>
+>    }
+>}
+>
+>var logNmae = function(lang1, lang2) {
+>
+>    console.log('Logged: ' + this.getFullName());
+>    console.log('Arguments: ' + lang1 + ' ' + lang2);
+>    console.log('-----------');
+>
+>}
+>
+>var logPersonName = logName.bind(person);
+>
+>logPersonName('en');
+>
+>logName.call(person, 'en', 'es');
+>```
+>
+>*Running* the above *snippet* would have the following output:
+>```
+>Logged: John Doe
+>Arguments: en undefined
+>-----------
+>Logged: John Doe
+>Arguments: en es
+>-----------
+>```
+>
+>`.call()` *executed* the function, the `.bind()` did **not execute** the *function*, it created a *copy*.
+>
 >
