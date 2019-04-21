@@ -2170,9 +2170,9 @@ UNDERSTANDING CLOSURES
 >
 >var fs = buildFunctions();
 >
->fs]0]();
->fs]1]();
->cs]2]();
+>fs[0]();
+>fs[1]();
+>fs[2]();
 >
 >```
 >
@@ -2250,7 +2250,7 @@ UNDERSTANDING CLOSURES
 >
 >There are a couple ways to approach that.
 >
->With `ES6`the `let` variable, we could do something like this:
+>With `ES6` the `let` variable, we could do something like this:
 >```
 >function buildFunctions2() {
 >    var arr = [];
@@ -2269,9 +2269,9 @@ UNDERSTANDING CLOSURES
 >
 >var fs = buildFunctions2();
 >
->fs]0]();
->fs]1]();
->fs]2]();
+>fs[0]();
+>fs[1]();
+>fs[2]();
 >
 >```
 >
@@ -2305,9 +2305,9 @@ UNDERSTANDING CLOSURES
 >
 >var fs = buildFunctions2();
 >
->fs]0]();
->fs]1]();
->fs]2]();
+>fs[0]();
+>fs[1]();
+>fs[2]();
 >
 >```
 >
@@ -2560,4 +2560,35 @@ call(), apply(), bind()
 >```
 >Logged: John Doe
 >```
+>
+>It would also be possible to *call* `.bind()` at the end of the `logName` *function expression*.
+>
+>*Example*:
+>```
+>var person = {
+>    firstname: 'John',
+>    lastname: 'Doe',
+>    getFullName: function() {
+>
+>        var fullname = this.firstname + ' ' + this.lastname;
+>        return fullname;
+>
+>    }
+>}
+>
+>var logNmae = function(lang1, lang2) {
+>
+>    console.log('Logged: ' + this.getFullName());
+>
+>}.bind(person)
+>
+>logName();
+>```
+>
+>The above *snippet* would also output `John Doe`.
+>
+>The `.bind()` *creates* a copy of whatever *function* you're calling it on.
+>
+>And whatever `object` you *pass* to the `bind()` *method* will be what the `this` *variable* points to *by reference*.
+>
 >
