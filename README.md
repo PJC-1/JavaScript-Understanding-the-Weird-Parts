@@ -2494,7 +2494,7 @@ call(), apply(), bind()
 >    }
 >}
 >
->var logNmae = function(lang1, lang2) {
+>var logName = function(lang1, lang2) {
 >
 >    console.log('Logged: ' + this.getFullName());
 >
@@ -2528,7 +2528,7 @@ call(), apply(), bind()
 >    }
 >}
 >
->var logNmae = function(lang1, lang2) {
+>var logName = function(lang1, lang2) {
 >
 >    console.log('Logged: ' + this.getFullName());
 >
@@ -2576,7 +2576,7 @@ call(), apply(), bind()
 >    }
 >}
 >
->var logNmae = function(lang1, lang2) {
+>var logName = function(lang1, lang2) {
 >
 >    console.log('Logged: ' + this.getFullName());
 >
@@ -2613,7 +2613,7 @@ call(), apply(), bind()
 >    }
 >}
 >
->var logNmae = function(lang1, lang2) {
+>var logName = function(lang1, lang2) {
 >
 >    console.log('Logged: ' + this.getFullName());
 >    console.log('Arguments: ' + lang1 + ' ' + lang2);
@@ -2640,4 +2640,13 @@ call(), apply(), bind()
 >
 >`.call()` *executed* the function, the `.bind()` did **not execute** the *function*, it created a *copy*.
 >
+>The `.apply()` *method* will behave almost *exactly* like the `.call()` *method*, with *one* difference.
+>
+>If I attempt to *pass* the `.apply()` *method* **parameters**, like `logName.apply(person, 'en', 'es')` I will receive the following **error**:
+>
+>`TypeError: second argument to Function.prototype.apply must be an array`
+>
+>This is because the `.apply()` *method* wants an `array` of *parameters*, rather than just the normal *list*.
+>
+>Thats the only difference between `.call()` and `.apply()`.
 >
