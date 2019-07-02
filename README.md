@@ -1,3 +1,4 @@
+
 JavaScript: Understanding the Weird Parts
 ===================
 >Following *Udemy Course* ["JavaScript: Understanding the Weird Parts"](https://www.udemy.com/understand-javascript).
@@ -2650,3 +2651,15 @@ call(), apply(), bind()
 >
 >Thats the only difference between `.call()` and `.apply()`.
 >
+>It's possible to use `.call()` or `.apply()` *on the fly*, by using the *self invoking syntax* to trick the parser into thinking the function is a *function expression*, then calling either the `call` or `apply` methods.
+>
+>*example*:
+>```
+>(function(lang1, lang2) {
+>
+>    console.log('Logged: ' + this.getFullName());
+>    console.log('Arguments: ' + lang1 + ' ' + lang2);
+>    console.log('-----------');
+>
+>}).apply(person, ['en', 'es']);
+>```

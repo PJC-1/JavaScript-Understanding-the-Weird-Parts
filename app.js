@@ -22,4 +22,21 @@ var logPersonName = logName.bind(person);
 logPersonName('en');
 
 logName.call(person, 'en', 'es');
-logName.apply(person, 'en', 'es');
+logName.apply(person, ['en', 'es']);
+
+(function(lang1, lang2) {
+
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('-----------');
+
+}).apply(person, ['en', 'es']);
+
+
+// function borrowing
+var person2 = {
+    firstname: 'Jane',
+    lastname: 'Doe'
+}
+
+person.getFullName.apply(person2);
