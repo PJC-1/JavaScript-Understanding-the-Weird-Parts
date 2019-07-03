@@ -2663,3 +2663,32 @@ call(), apply(), bind()
 >
 >}).apply(person, ['en', 'es']);
 >```
+>
+>One usecase for the `apply()` method is to borrow a method.
+>You can grab methods from other objects and use them as long as you have similar property names so that the function works.
+>
+>*example*:
+>
+>```
+>var person = {
+>    firstname: 'John',
+>    lastname: 'Doe',
+>    getFullName: function() {
+>
+>        var fullname = this.firstname + ' ' + this.lastname;
+>        return fullname;
+>
+>    }
+>}
+>
+>// function borrowing
+>var person2 = {
+>    firstname: 'Jane',
+>    lastname: 'Doe'
+>}
+>
+>console.log(person.getFullName.apply(person2));
+>```
+>
+>The above call would have the following output, `Jane Doe`.
+>
