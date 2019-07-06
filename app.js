@@ -2,8 +2,8 @@ function mapForEach(arr, fn) {
     var newArr = [];
     for (var i=0; i < arr.length; i++) {
         newArr.push(
-            fn(arr[i]);
-        )
+            fn(arr[i])
+        );
     }
 }
 
@@ -39,3 +39,7 @@ var checkPastLimitSimplified = function(limiter) {
 var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
 
 console.log(arr5);
+
+var arr6 = _.map(arr1, function(item) { return item * 3});
+
+console.log("arr6: ", arr6);
