@@ -1,50 +1,17 @@
-function mapForEach(arr, fn) {
-    var newArr = [];
-    for (var i=0; i < arr.length; i++) {
-        newArr.push(
-            fn(arr[i])
-        );
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    getFullName: function() {
+        return this.firstname + ' ' + this.lastname;
     }
 }
 
-var arr1 = [1, 2, 3];
-console.log(arr1);
-
-var arr2 = mapForEach(arr1, function(item) {
-    return item * 2;
-});
-
-console.log(arr2);
-
-var arr3 = mapForEach(arr1, function(item) {
-    return item > 2;
-});
-
-console.log(arr3);
-
-var checkPastLimit = function(limiter, item) {
-    return item > limiter;
+var john = {
+    firstname: 'John',
+    lastname: 'Doe'
 }
 
-var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
-
-console.log(arr4);
-
-var checkPastLimitSimplified = function(limiter) {
-    return function(limiter, item) {
-      return item > limiter;
-    }.bind(this, limiter);
-};
-
-var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
-
-console.log(arr5);
-
-// underscore
-var arr6 = _.map(arr1, function(item) { return item * 3});
-
-console.log("arr6: ", arr6);
-
-var arr7 = _.filter([2,3,4,5,6,7], function(item) { return item % 2 === 0 });
-
-console.log(arr7);
+// don't do this EVER! for demo purposes only!!!
+john.__proto__ = person;
+console.log(john.getFullName());
+console.log(john.firstname);
