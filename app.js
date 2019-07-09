@@ -15,3 +15,11 @@ var john = {
 john.__proto__ = person;
 console.log(john.getFullName());
 console.log(john.firstname);
+
+var jane = {
+    firstname: 'Jane'
+}
+
+jane.__proto__ = person;
+// outputs 'Jane Default'
+console.log(jane.getFullName());
