@@ -1,23 +1,36 @@
-class Person {
-    constructor(firstname, lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+var people = [
+    {
+        firstname: 'John',
+        lastname: 'Doe',
+        addresses: [
+            '111 Main St.',
+            '222 Third St.'
+        ]
+    },
+    {
+        firstname: 'Jane',
+        lastname: 'Doe',
+        addresses: [
+            '333 Main St.',
+            '444 Fifth St.'
+        ],
+        greet: function() {
+            return 'Hello!';
+        }
     }
+];
 
-    greet() {
-        return 'Hi ' + firstname;
-    }
+function Person(name) {
+    this.name = name;
 }
 
-var john = new Person('John', 'Doe');
+var e = new Person('Jane');
+console.log(typeof people);
+console.log(typeof people[0].firstname);
+console.log(typeof people[1].greet);
+console.log(e instanceof Person);
+console.log(typeof undefined);
+console.log(typeof null);
 
-
-class InformalPerson extends Person {
-    constructor(firstname, lastname) {
-        super(firstname, lastname);
-    }
-
-    greet() {
-        return 'Yo ' + firstname;
-    }
-}
+var z = function() {};
+console.log(typeof z);
